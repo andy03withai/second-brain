@@ -13,7 +13,7 @@ const config: QuartzConfig = {
       provider: "null",
     },
     locale: "zh-CN",
-    baseUrl: "andy03withai.github.io",
+    baseUrl: "andy03withai.github.io/second-brain",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
     theme: {
