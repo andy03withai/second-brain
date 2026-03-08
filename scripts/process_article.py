@@ -108,6 +108,20 @@ def save_and_push(url, note=""):
     
     print(f"✅ 已创建: {filename}")
     
+    # 尝试白话化处理（如果内容可获取）
+    try:
+        import subprocess as sp
+        result = sp.run(
+            ['python3', '/root/.openclaw/workspace/second-brain/scripts/plain_processor.py', filepath],
+            capture_output=True,
+            text=True,
+            timeout=10
+        )
+        if result.returncode == 0:
+            print(result.stdout)
+    except Exception as e:
+        print(f"⚠️ 白话化处理跳过: {e}")
+    
     repo_path = "/root/.openclaw/workspace/second-brain"
     try:
         subprocess.run(['git', 'add', '.'], cwd=repo_path, check=True, capture_output=True)
