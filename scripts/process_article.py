@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 第二大脑 - 文章处理脚本
-从飞书接收链接，处理后推送到 GitHub
+从飞书接收 /sb 命令，处理后推送到 GitHub
+
+用法: python process_article.py "/sb https://xxx.com 批注"
 """
 
 import sys
@@ -11,7 +13,6 @@ import json
 import subprocess
 from datetime import datetime
 from urllib.parse import urlparse
-import hashlib
 
 sys.path.insert(0, '/usr/lib/node_modules/openclaw')
 
@@ -21,25 +22,42 @@ def sanitize_filename(url):
     domain = parsed.netloc.replace('www.', '')
     path = parsed.path.strip('/').replace('/', '-')
     
-    # 取路径的最后一部分
     if path:
         name = path.split('-')[-1][:30]
     else:
         name = domain[:30]
     
-    # 清理非法字符
     name = re.sub(r'[^\w\s-]', '', name).strip()
     name = re.sub(r'[-\s]+', '-', name)
     
     date_str = datetime.now().strftime('%Y%m%d')
     return f"{date_str}-{name or 'article'}.md"
 
+def extract_url_and_note(text):
+    """从 /sb 命令中提取 URL 和批注"""
+    # 移除 /sb 前缀
+    text = text.strip()
+    if not text.startswith('/sb'):
+        return None, None
+    
+    content = text[3:].strip()  # 移除 /sb
+    
+    # 提取 URL
+    url_match = re.search(r'https?://[^\s]+', content)
+    if not url_match:
+        return None, None
+    
+    url = url_match.group(0)
+    # 批注是 URL 之后的内容
+    note = content[url_match.end():].strip()
+    
+    return url, note
+
 def generate_article(url, note=""):
     """生成文章 Markdown"""
     date_str = datetime.now().strftime('%Y-%m-%d')
     time_str = datetime.now().strftime('%Y-%m-%d %H:%M')
     
-    # 从 URL 提取域名作为标题
     parsed = urlparse(url)
     domain = parsed.netloc.replace('www.', '')
     
@@ -79,21 +97,17 @@ tags: [待分类]
 def save_and_push(url, note=""):
     """保存文章并推送到 GitHub"""
     
-    # 生成文件名
     filename = sanitize_filename(url)
     filepath = f"/root/.openclaw/workspace/second-brain/content/articles/{filename}"
     
-    # 确保目录存在
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     
-    # 写入文件
     content = generate_article(url, note)
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(content)
     
     print(f"✅ 已创建: {filename}")
     
-    # Git 操作
     repo_path = "/root/.openclaw/workspace/second-brain"
     try:
         subprocess.run(['git', 'add', '.'], cwd=repo_path, check=True, capture_output=True)
@@ -111,10 +125,28 @@ def save_and_push(url, note=""):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("用法: python process_article.py <URL> [批注]")
+        print("用法: python process_article.py '\u003c/sb https://xxx.com 批注\u003e'")
+        print("示例: python process_article.py '/sb https://example.com/article 讲AI的'")
         sys.exit(1)
     
-    url = sys.argv[1]
-    note = sys.argv[2] if len(sys.argv) > 2 else ""
+    full_text = sys.argv[1]
+    
+    # 检查是否以 /sb 开头
+    if not full_text.strip().startswith('/sb'):
+        print("❌ 未检测到 /sb 命令，跳过第二大脑收录")
+        print("提示：使用 /sb 开头触发收录，例如：/sb https://xxx.com 批注")
+        sys.exit(0)
+    
+    url, note = extract_url_and_note(full_text)
+    
+    if not url:
+        print("❌ 未能提取到 URL，请检查格式")
+        print("正确格式：/sb https://example.com/article 批注")
+        sys.exit(1)
+    
+    print(f"📝 检测到 /sb 命令")
+    print(f"🔗 URL: {url}")
+    print(f"💬 批注: {note or '(无)'}")
+    print()
     
     save_and_push(url, note)
