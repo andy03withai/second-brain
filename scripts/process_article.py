@@ -110,7 +110,7 @@ def save_and_push(url, note=""):
     
     # 应用 sb-paper：论文检测（最先执行，可能改变文章结构）
     try:
-        result = sp.run(
+        result = subprocess.run(
             ['python3', '/root/.openclaw/workspace/second-brain/scripts/paper_processor.py', filepath, url],
             capture_output=True,
             text=True,
@@ -123,7 +123,7 @@ def save_and_push(url, note=""):
     
     # 应用 sb-plain：白话化处理
     try:
-        result = sp.run(
+        result = subprocess.run(
             ['python3', '/root/.openclaw/workspace/second-brain/scripts/plain_processor.py', filepath],
             capture_output=True,
             text=True,
@@ -136,7 +136,7 @@ def save_and_push(url, note=""):
     
     # 应用 sb-writes：写作消化
     try:
-        result = sp.run(
+        result = subprocess.run(
             ['python3', '/root/.openclaw/workspace/second-brain/scripts/writes_processor.py', filepath, note],
             capture_output=True,
             text=True,
@@ -149,7 +149,7 @@ def save_and_push(url, note=""):
     
     # 应用 sb-card：生成知识卡片
     try:
-        result = sp.run(
+        result = subprocess.run(
             ['python3', '/root/.openclaw/workspace/second-brain/scripts/card_processor.py', filepath],
             capture_output=True,
             text=True,
