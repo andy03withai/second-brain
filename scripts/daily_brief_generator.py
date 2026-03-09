@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-第二大脑 - 每日简报生成器 v2.0 (P1优化版)
-增加: HF Daily Papers + Semantic Scholar引用数
+第二大脑 - 每日简报生成器 v2.2 (链接优化版)
+- 新增: HF Daily Papers + Semantic Scholar引用数
+- 重构: 目录结构改为每天一个文件夹
+- 优化: 增加便于跳转的导航链接
 """
 
 import os
@@ -272,6 +274,15 @@ def generate_topic_brief(topic_key, topic_config, date_str):
     # 生成Markdown
     date_display = datetime.strptime(date_str, '%Y%m%d').strftime('%Y年%m月%d日')
     
+    # 构建快速导航链接
+    nav_links = []
+    for tk, tc in TOPICS.items():
+        if tk == topic_key:
+            nav_links.append(f"**{tc['name']}**")
+        else:
+            nav_links.append(f"[[{tk}|{tc['name']}]]")
+    nav_bar = " → ".join(nav_links)
+    
     md_content = f"""---
 title: "{topic_config['name']} - 每日简报"
 date: {datetime.strptime(date_str, '%Y%m%d').strftime('%Y-%m-%d')}
@@ -280,6 +291,8 @@ tags: [daily-brief, {topic_key}]
 ---
 
 # {topic_config['name']} - {date_display} 简报
+
+> **📍 快速导航**: [[index|📰 总览]] | {nav_bar}
 
 ## 📊 今日概览
 
@@ -345,13 +358,15 @@ tags: [daily-brief, {topic_key}]
 
 ---
 
+> **← 返回** | [[index|📰 查看总览]] | [[ai|AI前沿]] | [[agent|Agent]] | [[autonomous-driving|自动驾驶]] | [[multimodal|多模态]] | [[embodied-intelligence|具身智能]]
+
 *简报由 Ace 自动生成于 {datetime.now().strftime('%Y-%m-%d %H:%M')}*
 *数据来源: arXiv + Hugging Face Daily Papers + Semantic Scholar*
 *如需深度分析某篇论文，请使用 `/sb 链接` 命令收录*
 """
     
-    # 写入文件
-    filepath = f"/root/.openclaw/workspace/second-brain/content/input/{topic_key}/{date_str}.md"
+    # 写入文件 - v2.1 新目录结构: 每天一个文件夹
+    filepath = f"/root/.openclaw/workspace/second-brain/content/input/{date_str}/{topic_key}.md"
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     
     with open(filepath, 'w', encoding='utf-8') as f:
@@ -372,6 +387,8 @@ tags: [daily-brief, index]
 
 # 📰 每日简报总览 - {date_display}
 
+> **快速跳转**: [[ai|🤖 AI前沿]] | [[agent|🎯 Agent]] | [[autonomous-driving|🚗 自动驾驶]] | [[multimodal|👁️ 多模态]] | [[embodied-intelligence|🦾 具身智能]]
+
 ## 各主题简报
 
 | 主题 | 状态 | 链接 |
@@ -380,7 +397,8 @@ tags: [daily-brief, index]
     
     for topic_key, topic_config in TOPICS.items():
         status = "✅ 已生成" if topic_key in topics_generated else "⏭️ 跳过"
-        link = f"[[input/{topic_key}/{date_str}|{topic_config['name']}]]"
+        # v2.1 新目录结构: 每天一个文件夹
+        link = f"[[input/{date_str}/{topic_key}|{topic_config['name']}]]"
         md_content += f"| {topic_config['name']} | {status} | {link} |\n"
     
     md_content += f"""
@@ -401,20 +419,22 @@ tags: [daily-brief, index]
 | HF热度 | +0~10 | 社区upvotes |
 | 代码开源 | +8 | GitHub/Code |
 
-## 使用指南
+## 📚 更多资源
 
-1. 浏览各主题简报，寻找感兴趣的内容
-2. 关注 🏛️顶级机构 📜顶级会议 📈高引用 的论文
-3. 对有价值的文章使用 `/sb 链接` 命令收录
-4. 收录后自动进入第二大脑处理流程
+- **历史简报**: [[../input/|查看所有历史简报]]
+- **文章收录**: 使用 `/sb 链接` 命令将感兴趣的论文/文章收入第二大脑
+- **在线阅读**: https://andy03withai.github.io/second-brain/input/{date_str}/
 
 ---
 
 *总索引生成于 {datetime.now().strftime('%H:%M')}*
-*P1优化: 新增HF Daily Papers + Semantic Scholar引用数*
+*v2.2: 新增导航链接优化*
 """
     
-    filepath = f"/root/.openclaw/workspace/second-brain/content/input/{date_str}-index.md"
+    # v2.1 新目录结构: 每天一个文件夹
+    filepath = f"/root/.openclaw/workspace/second-brain/content/input/{date_str}/index.md"
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(md_content)
     
@@ -426,9 +446,11 @@ def main():
     
     date_str = datetime.now().strftime('%Y%m%d')
     
-    print(f"🤖 Ace 开始生成每日简报 v2.0 (P1优化) - {date_str}")
+    print(f"🤖 Ace 开始生成每日简报 v2.2 (链接优化版) - {date_str}")
     print("=" * 60)
-    print("📊 新增数据源: HF Daily Papers + Semantic Scholar引用数")
+    print("📁 目录结构: 每天一个文件夹 (input/YYYYMMDD/)")
+    print("🔗 新增: 快速导航链接优化")
+    print("📊 数据源: HF Daily Papers + Semantic Scholar引用数")
     print("=" * 60)
     
     topics_generated = []
@@ -452,7 +474,7 @@ def main():
     repo_path = "/root/.openclaw/workspace/second-brain"
     try:
         subprocess.run(['git', 'add', '.'], cwd=repo_path, check=True, capture_output=True)
-        subprocess.run(['git', 'commit', '-m', f'Add daily briefs v2.0 for {date_str} (P1: HF+SS)'], 
+        subprocess.run(['git', 'commit', '-m', f'Add daily briefs v2.2 for {date_str} (optimized links)'], 
                       cwd=repo_path, check=True, capture_output=True)
         subprocess.run(['git', 'push', 'origin', 'main'], 
                       cwd=repo_path, check=True, capture_output=True)
@@ -461,9 +483,10 @@ def main():
         print(f"⚠️ Git推送失败: {e}")
     
     print("\n" + "=" * 60)
-    print(f"🎉 每日简报 v2.0 生成完成！")
-    print(f"📖 查看地址: https://andy03withai.github.io/second-brain/input/")
-    print("📊 新增: HF社区投票 + Semantic Scholar引用数")
+    print(f"🎉 每日简报 v2.2 生成完成！")
+    print(f"📖 查看地址: https://andy03withai.github.io/second-brain/input/{date_str}/")
+    print("📁 目录结构: content/input/YYYYMMDD/")
+    print("🔗 导航: 顶部快速跳转 + 底部返回链接")
 
 if __name__ == "__main__":
     main()
