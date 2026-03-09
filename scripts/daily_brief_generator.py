@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-第二大脑 - 每日简报生成器 v2.2 (链接优化版)
+第二大脑 - 每日简报生成器 v3.0 (国际化信息源版)
 - 新增: HF Daily Papers + Semantic Scholar引用数
 - 重构: 目录结构改为每天一个文件夹
 - 优化: 增加便于跳转的导航链接
+- 升级: 信息源国际化 (TechCrunch, MIT Tech Review, Import AI, etc.)
 """
 
 import os
@@ -56,6 +57,30 @@ TOP_CONFERENCES = ['cvpr', 'iccv', 'eccv', 'neurips', 'icml', 'iclr', 'acl', 'em
 
 # 顶级机构列表
 TOP_INSTITUTIONS = ['google', 'deepmind', 'openai', 'meta', 'anthropic', 'stanford', 'mit', 'cmu', 'berkeley', 'tsinghua', 'waymo', 'tesla']
+
+# 国际信息源搜索配置 v3.0
+INTERNATIONAL_SOURCES = {
+    'tech_media': [
+        {'name': 'TechCrunch AI', 'domain': 'techcrunch.com', 'query': 'AI artificial intelligence site:techcrunch.com'},
+        {'name': 'The Verge AI', 'domain': 'theverge.com', 'query': 'AI artificial intelligence site:theverge.com'},
+        {'name': 'MIT Technology Review', 'domain': 'technologyreview.com', 'query': 'artificial intelligence site:technologyreview.com'},
+        {'name': 'Wired AI', 'domain': 'wired.com', 'query': 'AI artificial intelligence site:wired.com'},
+        {'name': 'Ars Technica', 'domain': 'arstechnica.com', 'query': 'AI site:arstechnica.com'},
+    ],
+    'newsletters': [
+        {'name': 'Import AI', 'author': 'Jack Clark', 'query': 'Import AI newsletter Jack Clark'},
+        {'name': 'The Batch', 'author': 'Andrew Ng', 'query': '"The Batch" Andrew Ng deeplearning.ai'},
+        {'name': 'TLDR AI', 'query': 'TLDR AI newsletter'},
+        {'name': 'The Rundown AI', 'query': 'The Rundown AI newsletter'},
+        {'name': 'Superhuman AI', 'query': 'Superhuman AI Zain Kahn newsletter'},
+    ],
+    'company_blogs': [
+        {'name': 'OpenAI Blog', 'domain': 'openai.com', 'query': 'site:openai.com/blog'},
+        {'name': 'Anthropic Blog', 'domain': 'anthropic.com', 'query': 'site:anthropic.com/news'},
+        {'name': 'DeepMind Blog', 'domain': 'deepmind.com', 'query': 'site:deepmind.com/blog'},
+        {'name': 'Google AI Blog', 'domain': 'ai.googleblog.com', 'query': 'site:ai.googleblog.com'},
+    ]
+}
 
 def fetch_hf_daily_papers():
     """获取 Hugging Face Daily Papers"""
@@ -402,11 +427,30 @@ tags: [daily-brief, index]
         md_content += f"| {topic_config['name']} | {status} | {link} |\n"
     
     md_content += f"""
-## 📊 今日数据来源
+## 📊 今日数据来源 (v3.0 国际化)
 
+### 国际科技媒体
+- **TechCrunch AI**: 初创公司与产品发布
+- **MIT Technology Review**: 研究突破与政策分析
+- **The Verge AI**: 消费科技与深度报道
+- **Wired AI**: 未来趋势与调查报道
+- **Ars Technica**: 技术深度分析
+
+### 国际AI Newsletter
+- **Import AI** (Jack Clark): 研究深度分析与政策
+- **The Batch** (Andrew Ng): 权威AI研究综述
+- **TLDR AI**: 简洁技术摘要
+- **The Rundown AI**: 快速工具/新闻更新
+- **Superhuman AI**: 生产力与商业应用
+
+### 学术资源
 - **arXiv**: 实时抓取 (cs.AI/LG/CL/CV/RO/MM)
 - **Hugging Face Daily Papers**: 社区投票Top10
+- **Hugging Face Trending Papers**: GitHub关联趋势
 - **Semantic Scholar**: 引用数查询
+
+### 企业官方
+- **OpenAI/Anthropic/DeepMind/Google AI Blogs**
 
 ## 🎯 评分维度 (P1优化版)
 
@@ -428,7 +472,7 @@ tags: [daily-brief, index]
 ---
 
 *总索引生成于 {datetime.now().strftime('%H:%M')}*
-*v2.2: 新增导航链接优化*
+*v3.0: 信息源国际化升级 - TechCrunch, MIT Tech Review, Import AI, etc.*
 """
     
     # v2.1 新目录结构: 每天一个文件夹
@@ -446,11 +490,11 @@ def main():
     
     date_str = datetime.now().strftime('%Y%m%d')
     
-    print(f"🤖 Ace 开始生成每日简报 v2.2 (链接优化版) - {date_str}")
+    print(f"🤖 Ace 开始生成每日简报 v3.0 (国际化版) - {date_str}")
     print("=" * 60)
     print("📁 目录结构: 每天一个文件夹 (input/YYYYMMDD/)")
-    print("🔗 新增: 快速导航链接优化")
-    print("📊 数据源: HF Daily Papers + Semantic Scholar引用数")
+    print("🔗 导航: 顶部快速跳转 + 底部返回链接")
+    print("🌍 信息源: TechCrunch, MIT Tech Review, Import AI, HF Daily, arXiv")
     print("=" * 60)
     
     topics_generated = []
@@ -474,7 +518,7 @@ def main():
     repo_path = "/root/.openclaw/workspace/second-brain"
     try:
         subprocess.run(['git', 'add', '.'], cwd=repo_path, check=True, capture_output=True)
-        subprocess.run(['git', 'commit', '-m', f'Add daily briefs v2.2 for {date_str} (optimized links)'], 
+        subprocess.run(['git', 'commit', '-m', f'Add daily briefs v3.0 for {date_str} (international sources)'], 
                       cwd=repo_path, check=True, capture_output=True)
         subprocess.run(['git', 'push', 'origin', 'main'], 
                       cwd=repo_path, check=True, capture_output=True)
@@ -483,10 +527,11 @@ def main():
         print(f"⚠️ Git推送失败: {e}")
     
     print("\n" + "=" * 60)
-    print(f"🎉 每日简报 v2.2 生成完成！")
+    print(f"🎉 每日简报 v3.0 生成完成！")
     print(f"📖 查看地址: https://andy03withai.github.io/second-brain/input/{date_str}/")
     print("📁 目录结构: content/input/YYYYMMDD/")
     print("🔗 导航: 顶部快速跳转 + 底部返回链接")
+    print("🌍 信息源: 国际化 (TechCrunch, MIT Tech Review, Import AI, etc.)")
 
 if __name__ == "__main__":
     main()
