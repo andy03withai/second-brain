@@ -1,51 +1,38 @@
 ---
-title: "来自 github.com"
+title: "Karpathy AutoResearch"
 date: 2026-03-09
 source: "https://github.com/karpathy/autoresearch"
-tags: [待分类]
+tags: [karpathy, 研究工具, 自动化, 待深入]
 ---
 
 ## 核心摘要
 
-> 一句话摘要：就像核心摘要...
+> 一句话摘要：Karpathy 的研究自动化工具/框架。
 
 一段话摘要：
-为什么核心摘要？关键信息抽取。这意味着信息增量。
+待阅读后补充。从仓库名推测可能是自动化文献综述、实验管理或论文写作辅助工具。Karpathy 此前有类似的自动化项目（如 nanoGPT、llm.c），这个项目可能延续了简洁实用的风格。
 
 ## 关键信息抽取
 
 | 项目 | 内容 |
 |------|------|
-| 来源 | [github.com](https://github.com/karpathy/autoresearch) |
-| 收录时间 | 2026-03-09 12:54 |
-| 状态 | 🔄 处理中 |
+| **来源** | [GitHub](https://github.com/karpathy/autoresearch) |
+| **作者** | Andrej Karpathy |
+| **类型** | 开源工具/框架 |
+| **收录时间** | 2026-03-09 12:54 |
+| **状态** | 🔄 待深入阅读 |
 
-## 信息增量
+## 待探索问题
 
-## 通过写作消化
-
-原文核心论点：
-1. 我的批注
-
-写作问题：
-- [ ] 你提到 'https://github.com/karpathy/autoresearch'——顺着这个思路还能想到什么？
-- [ ] '我的批注' 让你联想到什么个人经验或已知知识？
-- [ ] 如果质疑 '我的批注'，你会从哪里切入？
-- [ ] 这篇文章的结论边界在哪里？在什么情况下不适用？
-
-建议的写作方向：
-- **对比**：这个观点与你已知的概念有什么异同？
-- **应用**：这个观点可以在什么场景下使用？  
-- **质疑**：这个结论的边界在哪里？
-- **延伸**：顺着这个思路还能推出什么？
-
-> 💡 提示：选择 1-2 个问题，用 10 分钟写一段思考。不需要完整，只需要开始。
-
+- [ ] 具体功能是什么？文献综述？实验管理？还是其他？
+- [ ] 与现有的研究工具（如 Zotero、Obsidian + 插件）相比有什么特色？
+- [ ] 是否使用 LLM？如果是，用了什么模型？
+- [ ] 代码质量和易用性如何？
 
 ## 我的批注
 
-read it later
+read it later —— 先标记，等有时间仔细研究。Karpathy 的东西通常值得深入。
 
 ---
 
-*原文链接：[https://github.com/karpathy/autoresearch](https://github.com/karpathy/autoresearch)*
+*原文链接：[github.com/karpathy/autoresearch](https://github.com/karpathy/autoresearch)*
