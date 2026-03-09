@@ -19,41 +19,69 @@ description: 收集、整理、学习、消化、发布
 /sb URL1 URL2 URL3 批注
 ```
 
-只有以 `/sb` 开头的消息才会进入第二大脑工作流。
+> ⚠️ **重要**：只有以 `/sb` 开头的消息才会触发第二大脑收录流程。
+
+---
 
 ## 📥 每日简报 (Input)
 
-每天早上6点自动生成：
+每天早上6点自动生成，涵盖5个主题：
 
-- [[input/index|今日简报总览]] - 5个主题的最新信息
-- [[input/ai/index|AI 前沿]] · [[input/agent/index|Agent]] · [[input/autonomous-driving/index|自动驾驶]] · [[input/multimodal/index|多模态]] · [[input/embodied-intelligence/index|具身智能]]
+| 主题 | 说明 | 最新简报 |
+|------|------|----------|
+| 🤖 [[input/ai/index|AI 前沿]] | 大模型、算法、训练优化 | [[input/20260310/ai|今日]] |
+| 🎯 [[input/agent/index|Agent 智能体]] | 智能体架构、工具调用 | [[input/20260310/agent|今日]] |
+| 🚗 [[input/autonomous-driving/index|自动驾驶]] | 端到端、VLA、BEV | [[input/20260310/autonomous-driving|今日]] |
+| 👁️ [[input/multimodal/index|多模态]] | Vision-Language、CLIP | [[input/20260310/multimodal|今日]] |
+| 🦾 [[input/embodied-intelligence/index|具身智能]] | 机器人、VLA | [[input/20260310/embodied-intelligence|今日]] |
 
-使用方式：浏览简报 → 筛选有价值内容 → `/sb 链接` 收录
+**📰 总览**: [[input/20260310/index|2026-03-10 每日简报总览]] ⭐ 最新
 
-## 📚 知识库 (Second Brain)
+**使用方式**：浏览简报 → 筛选有价值内容 → `/sb 链接` 收录
+
+---
+
+## 📚 知识库 (Articles)
+
+### 最新收录
+- [[articles/agency-agents|Agency Agents - Agent组成的公司]] - 2026-03-10
+- [[articles/20260309-testing-skills|Testing Agent Skills: 实战指南]] - 2026-03-09
+- [[articles/20260309-autoresearch|Karpathy AutoResearch]] - 2026-03-09
 
 ### 主题收录
 - [[articles/20260309-theme-index|杰文斯悖论与 AI 时代]] - 播客+文章，效率陷阱的思考
 
-### 单篇文章
+### 技能设计
 - [[articles/20260309-69a64629de29766da93331ec|李继刚专访播客]] - 工作流与技能设计
 - [[articles/20260309-skills|李继刚 Skills 集合]] - 6 个实用 Claude Code 技能
 - [[articles/20260309-practices|Agent Skills 最佳实践]] - 技能编写指南
+
+**查看全部**: [[articles/index|📚 所有文章]]
+
+---
 
 ## 🏷️ 标签浏览
 
 - [[tags/杰文斯悖论|杰文斯悖论]] - 效率与消耗的悖论
 - [[tags/李继刚|李继刚]] - 技能设计相关
 - [[tags/主题收录|主题收录]] - 多链接主题文章
+- [[tags/agent|Agent]] - 智能体相关
 
-## 📓 每日日记
-
-- [[daily/index|Daily Notes]] - 每日对话记录
-
-## 📖 使用指南
-
-- [[guide|第二大脑使用指南]]
+**查看全部**: [[tags/index|🏷️ 所有标签]]
 
 ---
 
-*最后更新：2026-03-09*
+## 📓 每日日记
+
+- [[daily/20260309|2026-03-09]] - 每日对话记录
+- [[daily/index|查看全部日记]]
+
+---
+
+## 📖 使用指南
+
+- [[guide|第二大脑使用指南]] - 完整使用说明
+
+---
+
+*最后更新：2026-03-10*

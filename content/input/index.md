@@ -9,17 +9,18 @@ description: 自动采集的信息源，每日更新
 
 ## 主题分类
 
-| 主题 | 说明 | 今日简报 |
+| 主题 | 说明 | 历史简报 |
 |------|------|----------|
-| [[input/ai/index\|AI 前沿]] | 大模型、算法、训练优化 | [[input/ai/{{date:YYYYMMDD}}\|今日]] |
-| [[input/agent/index\|Agent 智能体]] | 智能体架构、工具调用、Multi-Agent | [[input/agent/{{date:YYYYMMDD}}\|今日]] |
-| [[input/autonomous-driving/index\|自动驾驶]] | 端到端、VLA、BEV、Occupancy | [[input/autonomous-driving/{{date:YYYYMMDD}}\|今日]] |
-| [[input/multimodal/index\|多模态]] | Vision-Language、多模态学习 | [[input/multimodal/{{date:YYYYMMDD}}\|今日]] |
-| [[input/embodied-intelligence/index\|具身智能]] | 机器人、VLA、操作学习 | [[input/embodied-intelligence/{{date:YYYYMMDD}}\|今日]] |
+| [[input/ai/index|AI 前沿]] | 大模型、算法、训练优化 | 查看历史 → |
+| [[input/agent/index|Agent 智能体]] | 智能体架构、工具调用、Multi-Agent | 查看历史 → |
+| [[input/autonomous-driving/index|自动驾驶]] | 端到端、VLA、BEV、Occupancy | 查看历史 → |
+| [[input/multimodal/index|多模态]] | Vision-Language、多模态学习 | 查看历史 → |
+| [[input/embodied-intelligence/index|具身智能]] | 机器人、VLA、操作学习 | 查看历史 → |
 
-## 总览
+## 📅 今日简报
 
-- [[input/{{date:YYYYMMDD}}-index\|今日简报总览]]
+- [[input/20260310/index|2026年03月10日 - 每日简报总览]] ⭐ 最新
+- [[input/20260309-index|2026年03月09日 - 每日简报总览]]
 
 ## 使用方式
 
@@ -27,13 +28,20 @@ description: 自动采集的信息源，每日更新
 2. **筛选有价值内容** - 阅读摘要，判断是否深入
 3. **收录到第二大脑** - 对有价值的文章使用 `/sb 链接` 命令
 
-## 信息来源
+## 📊 信息来源 (v3.0)
 
-- arXiv 每日新论文
-- Hugging Face Daily Papers
-- 顶级机构博客
-- GitHub Trending
+### 国际科技媒体
+- TechCrunch AI、MIT Technology Review
+- The Verge AI、Wired AI
+
+### 国际AI Newsletter
+- Import AI (Jack Clark)、The Batch (Andrew Ng)
+- TLDR AI、The Rundown AI
+
+### 学术资源
+- arXiv、Hugging Face Daily Papers
+- Semantic Scholar
 
 ---
 
-*每日6:00自动生成*
+*每日6:00自动生成 | 信息源v3.0已国际化*
