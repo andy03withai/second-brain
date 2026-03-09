@@ -21,7 +21,16 @@ description: 收集、整理、学习、消化、发布
 
 只有以 `/sb` 开头的消息才会进入第二大脑工作流。
 
-## 📚 最近收录
+## 📥 每日简报 (Input)
+
+每天早上6点自动生成：
+
+- [[input/index|今日简报总览]] - 5个主题的最新信息
+- [[input/ai/index|AI 前沿]] · [[input/agent/index|Agent]] · [[input/autonomous-driving/index|自动驾驶]] · [[input/multimodal/index|多模态]] · [[input/embodied-intelligence/index|具身智能]]
+
+使用方式：浏览简报 → 筛选有价值内容 → `/sb 链接` 收录
+
+## 📚 知识库 (Second Brain)
 
 ### 主题收录
 - [[articles/20260309-theme-index|杰文斯悖论与 AI 时代]] - 播客+文章，效率陷阱的思考
