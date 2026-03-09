@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """
-第二大脑 - 文章处理脚本
-从飞书接收 /sb 命令，处理后推送到 GitHub
+第二大脑 - 文章处理脚本（支持多链接）
+从飞书接收 /sb 命令，处理多个相关链接
 
-用法: python process_article.py "/sb https://xxx.com 批注"
+用法: python process_article.py "/sb https://xxx.com https://yyy.com 批注"
 """
 
 import sys
 import os
 import re
-import json
 import subprocess
 from datetime import datetime
 from urllib.parse import urlparse
@@ -33,33 +32,40 @@ def sanitize_filename(url):
     date_str = datetime.now().strftime('%Y%m%d')
     return f"{date_str}-{name or 'article'}.md"
 
-def extract_url_and_note(text):
-    """从 /sb 命令中提取 URL 和批注"""
-    # 移除 /sb 前缀
+def extract_urls_and_note(text):
+    """从 /sb 命令中提取所有 URL 和批注"""
     text = text.strip()
     if not text.startswith('/sb'):
-        return None, None
+        return [], None
     
     content = text[3:].strip()  # 移除 /sb
     
-    # 提取 URL
-    url_match = re.search(r'https?://[^\s]+', content)
-    if not url_match:
-        return None, None
+    # 提取所有 URL
+    urls = re.findall(r'https?://[^\s]+', content)
     
-    url = url_match.group(0)
-    # 批注是 URL 之后的内容
-    note = content[url_match.end():].strip()
+    if not urls:
+        return [], None
     
-    return url, note
+    # 批注是最后一个 URL 之后的内容
+    last_url_end = content.rfind(urls[-1]) + len(urls[-1])
+    note = content[last_url_end:].strip()
+    
+    return urls, note
 
-def generate_article(url, note=""):
+def generate_article(url, note="", related_urls=None):
     """生成文章 Markdown"""
     date_str = datetime.now().strftime('%Y-%m-%d')
     time_str = datetime.now().strftime('%Y-%m-%d %H:%M')
     
     parsed = urlparse(url)
     domain = parsed.netloc.replace('www.', '')
+    
+    # 相关链接部分
+    related_section = ""
+    if related_urls:
+        related_section = "\n## 相关链接\n\n"
+        for i, related_url in enumerate(related_urls, 1):
+            related_section += f"{i}. [{related_url}]({related_url})\n"
     
     md_content = f"""---
 title: "来自 {domain}"
@@ -79,7 +85,7 @@ tags: [待分类]
 | 来源 | [{domain}]({url}) |
 | 收录时间 | {time_str} |
 | 状态 | 🔄 处理中 |
-
+{related_section}
 ## 信息增量
 
 待对比分析
@@ -94,76 +100,125 @@ tags: [待分类]
 """
     return md_content
 
-def save_and_push(url, note=""):
-    """保存文章并推送到 GitHub"""
+def generate_index_article(urls, note=""):
+    """生成主索引文章（当有多链接时）"""
+    date_str = datetime.now().strftime('%Y-%m-%d')
+    time_str = datetime.now().strftime('%Y-%m-%d %H:%M')
     
+    # 生成相关文章列表
+    related_list = "\n".join([f"{i+1}. [{url}]({url})" for i, url in enumerate(urls)])
+    
+    md_content = f"""---
+title: "主题收录 - {len(urls)} 个相关资源"
+date: {date_str}
+source: "多链接收录"
+tags: [待分类, 主题收录]
+---
+
+## 核心摘要
+
+> 一句话摘要：待补充
+
+一段话摘要：
+待补充
+
+## 收录资源
+
+{related_list}
+
+## 信息增量
+
+待对比分析各资源之间的关系
+
+## 我的批注
+
+{note if note else '（暂无批注）'}
+
+---
+
+*收录时间：{time_str}*
+"""
+    return md_content
+
+def process_single_article(url, note, related_urls=None):
+    """处理单篇文章"""
     filename = sanitize_filename(url)
     filepath = f"/root/.openclaw/workspace/second-brain/content/articles/{filename}"
     
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     
-    content = generate_article(url, note)
+    # 过滤掉当前 URL 自身的相关链接
+    other_related = [u for u in (related_urls or []) if u != url]
+    
+    content = generate_article(url, note, other_related if other_related else None)
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(content)
     
     print(f"✅ 已创建: {filename}")
     
-    # 应用 sb-paper：论文检测（最先执行，可能改变文章结构）
-    try:
-        result = subprocess.run(
-            ['python3', '/root/.openclaw/workspace/second-brain/scripts/paper_processor.py', filepath, url],
-            capture_output=True,
-            text=True,
-            timeout=10
-        )
-        if result.returncode == 0:
-            print(result.stdout)
-    except Exception as e:
-        print(f"⚠️ 论文处理跳过: {e}")
+    # 应用技能处理
+    processors = [
+        ('paper', '/root/.openclaw/workspace/second-brain/scripts/paper_processor.py'),
+        ('plain', '/root/.openclaw/workspace/second-brain/scripts/plain_processor.py'),
+        ('writes', '/root/.openclaw/workspace/second-brain/scripts/writes_processor.py'),
+        ('card', '/root/.openclaw/workspace/second-brain/scripts/card_processor.py'),
+    ]
     
-    # 应用 sb-plain：白话化处理
-    try:
-        result = subprocess.run(
-            ['python3', '/root/.openclaw/workspace/second-brain/scripts/plain_processor.py', filepath],
-            capture_output=True,
-            text=True,
-            timeout=10
-        )
-        if result.returncode == 0:
-            print(result.stdout)
-    except Exception as e:
-        print(f"⚠️ 白话化处理跳过: {e}")
+    for name, processor_path in processors:
+        try:
+            result = subprocess.run(
+                ['python3', processor_path, filepath, url],
+                capture_output=True,
+                text=True,
+                timeout=10
+            )
+            if result.returncode == 0 and result.stdout.strip():
+                print(f"  {result.stdout.strip()}")
+        except Exception as e:
+            pass  # 静默跳过错误
     
-    # 应用 sb-writes：写作消化
-    try:
-        result = subprocess.run(
-            ['python3', '/root/.openclaw/workspace/second-brain/scripts/writes_processor.py', filepath, note],
-            capture_output=True,
-            text=True,
-            timeout=10
-        )
-        if result.returncode == 0:
-            print(result.stdout)
-    except Exception as e:
-        print(f"⚠️ 写作消化跳过: {e}")
+    return filename
+
+def save_and_push(urls, note=""):
+    """保存文章并推送到 GitHub"""
     
-    # 应用 sb-card：生成知识卡片
-    try:
-        result = subprocess.run(
-            ['python3', '/root/.openclaw/workspace/second-brain/scripts/card_processor.py', filepath],
-            capture_output=True,
-            text=True,
-            timeout=10
-        )
-        if result.returncode == 0:
-            print(result.stdout)
-    except Exception as e:
-        print(f"⚠️ 卡片生成跳过: {e}")
+    if len(urls) == 1:
+        # 单链接：直接处理
+        process_single_article(urls[0], note)
+    else:
+        # 多链接：创建主索引 + 各子文章
+        print(f"📝 检测到 {len(urls)} 个相关链接")
+        print()
+        
+        # 先创建各子文章
+        created_files = []
+        for i, url in enumerate(urls, 1):
+            print(f"[{i}/{len(urls)}] 处理: {url[:60]}...")
+            filename = process_single_article(url, note, urls)
+            created_files.append(filename)
+            print()
+        
+        # 创建主索引文章
+        index_filename = f"{datetime.now().strftime('%Y%m%d')}-theme-index.md"
+        index_filepath = f"/root/.openclaw/workspace/second-brain/content/articles/{index_filename}"
+        
+        index_content = generate_index_article(urls, note)
+        with open(index_filepath, 'w', encoding='utf-8') as f:
+            f.write(index_content)
+        
+        print(f"✅ 已创建主题索引: {index_filename}")
     
+    # Git 提交
     repo_path = "/root/.openclaw/workspace/second-brain"
     try:
         subprocess.run(['git', 'add', '.'], cwd=repo_path, check=True, capture_output=True)
-        subprocess.run(['git', 'commit', '-m', f'Add article: {url[:50]}...'], 
+        
+        if len(urls) == 1:
+            commit_msg = f'Add article: {urls[0][:50]}...'
+        else:
+            commit_msg = f'Add theme with {len(urls)} links'
+        
+        subprocess.run(['git', 'commit', '-m', commit_msg], 
                       cwd=repo_path, check=True, capture_output=True)
         subprocess.run(['git', 'push', 'origin', 'main'], 
                       cwd=repo_path, check=True, capture_output=True)
@@ -177,28 +232,30 @@ def save_and_push(url, note=""):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("用法: python process_article.py '\u003c/sb https://xxx.com 批注\u003e'")
-        print("示例: python process_article.py '/sb https://example.com/article 讲AI的'")
+        print("用法: python process_article.py '\u003c/sb URL [URL2 URL3...] 批注\u003e'")
+        print("示例:")
+        print("  单链接: /sb https://example.com/article 讲AI的")
+        print("  多链接: /sb https://podcast.com/ep1 https://blog.com/transcript 播客+文字稿")
         sys.exit(1)
     
     full_text = sys.argv[1]
     
-    # 检查是否以 /sb 开头
     if not full_text.strip().startswith('/sb'):
         print("❌ 未检测到 /sb 命令，跳过第二大脑收录")
-        print("提示：使用 /sb 开头触发收录，例如：/sb https://xxx.com 批注")
         sys.exit(0)
     
-    url, note = extract_url_and_note(full_text)
+    urls, note = extract_urls_and_note(full_text)
     
-    if not url:
+    if not urls:
         print("❌ 未能提取到 URL，请检查格式")
         print("正确格式：/sb https://example.com/article 批注")
         sys.exit(1)
     
     print(f"📝 检测到 /sb 命令")
-    print(f"🔗 URL: {url}")
+    print(f"🔗 链接数: {len(urls)}")
+    for i, url in enumerate(urls, 1):
+        print(f"   [{i}] {url}")
     print(f"💬 批注: {note or '(无)'}")
     print()
     
-    save_and_push(url, note)
+    save_and_push(urls, note)

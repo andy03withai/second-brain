@@ -11,9 +11,21 @@ version: "1.0.0"
 ## 触发方式
 
 用户消息以 `/sb` 开头：
+
+### 单链接
 ```
 /sb https://example.com/article 你的批注（可选）
 ```
+
+### 多链接（主题收录）
+```
+/sb https://podcast.com/ep1 https://blog.com/transcript https://github.com/code 播客+文字稿+代码
+```
+
+多链接会自动：
+1. 为每个链接创建独立文章
+2. 在各文章中添加「相关链接」部分
+3. 创建一个主题索引文章汇总所有资源
 
 ## 工作流步骤
 
