@@ -1,0 +1,55 @@
+{
+  "base_score": 40,
+  "max_score": 100,
+  "dimensions": {
+    "keyword": {
+      "weight_per_hit": 5,
+      "max_bonus": 30,
+      "description": "关键词匹配，命中越多分越高"
+    },
+    "institution": {
+      "bonus": 15,
+      "institutions": [
+        "google", "deepmind", "openai", "meta", "anthropic",
+        "stanford", "mit", "cmu", "berkeley", "tsinghua",
+        "waymo", "tesla", "nvidia", "microsoft", "amazon"
+      ],
+      "description": "顶级机构背景"
+    },
+    "conference": {
+      "bonus": 20,
+      "conferences": [
+        "cvpr", "iccv", "eccv",
+        "neurips", "icml", "iclr",
+        "acl", "emnlp", "naacl",
+        "rss", "icra", "iros", "corl"
+      ],
+      "description": "顶级会议论文"
+    },
+    "citation": {
+      "tiers": [
+        {"threshold": 100, "bonus": 5},
+        {"threshold": 500, "bonus": 10},
+        {"threshold": 1000, "bonus": 15}
+      ],
+      "description": "Semantic Scholar引用数"
+    },
+    "hf_upvotes": {
+      "tiers": [
+        {"threshold": 20, "bonus": 5},
+        {"threshold": 50, "bonus": 10}
+      ],
+      "description": "Hugging Face社区热度"
+    },
+    "open_source": {
+      "bonus": 8,
+      "keywords": ["github", "code", "开源", "open-source"],
+      "description": "代码开源"
+    }
+  },
+  "output": {
+    "top_n": 10,
+    "top_detailed": 3,
+    "summary_length": 150
+  }
+}

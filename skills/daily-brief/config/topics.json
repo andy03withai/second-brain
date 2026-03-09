@@ -1,0 +1,32 @@
+{
+  "ai": {
+    "name": "AI 前沿",
+    "arxiv_cats": ["cs.AI", "cs.LG", "cs.CL"],
+    "keywords": ["大语言模型", "LLM", "Transformer", "GPT", "推理", "训练优化", "MoE", "注意力机制"],
+    "hf_filter": ["language-model", "transformer", "gpt"]
+  },
+  "agent": {
+    "name": "Agent 智能体",
+    "arxiv_cats": ["cs.AI"],
+    "keywords": ["Agent", "智能体", "Multi-Agent", "工具调用", "Tool Use", "AutoGPT", "Claude", "LangChain", "ReAct"],
+    "hf_filter": ["agent", "llm-agent"]
+  },
+  "autonomous-driving": {
+    "name": "自动驾驶大模型",
+    "arxiv_cats": ["cs.CV", "cs.RO"],
+    "keywords": ["端到端", "end-to-end", "VLA", "Vision-Language-Action", "VLM", "BEV", "Occupancy", "nuScenes", "Waymo", "规划", "预测", "感知"],
+    "hf_filter": ["autonomous-driving", "end-to-end-driving"]
+  },
+  "multimodal": {
+    "name": "多模态数据",
+    "arxiv_cats": ["cs.CV", "cs.MM"],
+    "keywords": ["多模态", "Multimodal", "CLIP", "Vision-Language", "VLM", "图文", "跨模态", "图像理解"],
+    "hf_filter": ["multimodal", "vision-language"]
+  },
+  "embodied-intelligence": {
+    "name": "具身智能",
+    "arxiv_cats": ["cs.RO"],
+    "keywords": ["具身智能", "Embodied", "机器人", "Robot", "RT-2", "VLA", "Manipulation", "操作", "导航", "抓取"],
+    "hf_filter": ["robotics", "embodied-ai"]
+  }
+}
