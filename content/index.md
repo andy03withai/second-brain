@@ -18,15 +18,20 @@ description: 收集、整理、学习、消化、发布
 
 ## 📚 最近收录
 
-- [[articles/20260309-skills|lijigang-skills: 个人管理技能集合]] - 个人管理相关 OpenClaw skills
+- [[articles/20260309-69a64629de29766da93331ec|小宇宙播客：李继刚专访]] - 李继刚的工作流与技能设计
+- [[articles/20260309-skills|李继刚 Skills 集合 (ljg-skills)]] - 6 个实用 Claude Code 技能
 - [[articles/20260309-practices|Agent Skills 最佳实践]] - 如何编写专业级 Agent 技能
 - [[guide|使用指南]] - 第二大脑使用方法
 
 ## 🏷️ 标签浏览
 
 - [[tags/skills|skills]] - Agent 技能相关
+- [[tags/李继刚|李继刚]] - 李继刚相关内容
 - [[tags/ai-agent|ai-agent]] - AI 代理
-- [[tags/personal-management|personal-management]] - 个人管理
+
+## 📓 每日日记
+
+- [[daily/index|Daily Notes]] - 每日对话记录
 
 ---
 
