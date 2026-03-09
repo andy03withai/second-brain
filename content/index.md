@@ -14,24 +14,36 @@ description: 收集、整理、学习、消化、发布
 /sb https://example.com/article 你的批注（可选）
 ```
 
-只有以 `/sb` 开头的消息才会进入第二大脑工作流。普通对话不受影响。
+多链接主题收录：
+```
+/sb URL1 URL2 URL3 批注
+```
+
+只有以 `/sb` 开头的消息才会进入第二大脑工作流。
 
 ## 📚 最近收录
 
-- [[articles/20260309-69a64629de29766da93331ec|小宇宙播客：李继刚专访]] - 李继刚的工作流与技能设计
-- [[articles/20260309-skills|李继刚 Skills 集合 (ljg-skills)]] - 6 个实用 Claude Code 技能
-- [[articles/20260309-practices|Agent Skills 最佳实践]] - 如何编写专业级 Agent 技能
-- [[guide|使用指南]] - 第二大脑使用方法
+### 主题收录
+- [[articles/20260309-theme-index|杰文斯悖论与 AI 时代]] - 播客+文章，效率陷阱的思考
+
+### 单篇文章
+- [[articles/20260309-69a64629de29766da93331ec|李继刚专访播客]] - 工作流与技能设计
+- [[articles/20260309-skills|李继刚 Skills 集合]] - 6 个实用 Claude Code 技能
+- [[articles/20260309-practices|Agent Skills 最佳实践]] - 技能编写指南
 
 ## 🏷️ 标签浏览
 
-- [[tags/skills|skills]] - Agent 技能相关
-- [[tags/李继刚|李继刚]] - 李继刚相关内容
-- [[tags/ai-agent|ai-agent]] - AI 代理
+- [[tags/杰文斯悖论|杰文斯悖论]] - 效率与消耗的悖论
+- [[tags/李继刚|李继刚]] - 技能设计相关
+- [[tags/主题收录|主题收录]] - 多链接主题文章
 
 ## 📓 每日日记
 
 - [[daily/index|Daily Notes]] - 每日对话记录
+
+## 📖 使用指南
+
+- [[guide|第二大脑使用指南]]
 
 ---
 
