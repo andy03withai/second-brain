@@ -13,22 +13,22 @@ version: "1.0.0"
 ### 命令格式
 
 ```
-/research <主题> [可选：深度级别/特殊要求]
+/r <主题> [可选：深度级别/特殊要求]
 ```
 
 **基础调研**
 ```
-/research AI Agent 在电商领域的应用
+/r AI Agent 在电商领域的应用
 ```
 
 **指定深度**
 ```
-/research 具身智能最新进展 --depth deep
+/r 具身智能最新进展 --depth deep
 ```
 
 **指定输出要求**
 ```
-/research 大模型推理优化技术 --focus 技术方案对比
+/r 大模型推理优化技术 --focus 技术方案对比
 ```
 
 ## 工作流程
@@ -140,25 +140,25 @@ second-brain/
 
 ### 技术调研
 ```
-/research LLM 推理优化技术 --depth deep
+/r LLM 推理优化技术 --depth deep
 ```
 重点分析：量化、蒸馏、投机解码、KV Cache 优化等方案对比。
 
 ### 商业分析
 ```
-/research AI Coding 工具市场格局 --depth comprehensive
+/r AI Coding 工具市场格局 --depth comprehensive
 ```
 涵盖：GitHub Copilot、Cursor、Devin 等竞品分析，市场份额，商业模式。
 
 ### 学术综述
 ```
-/research 视觉语言模型 (VLM) 最新进展
+/r 视觉语言模型 (VLM) 最新进展
 ```
 涵盖：2025-2026 最新论文、SOTA 模型、关键技术突破。
 
 ### 政策研究
 ```
-/research 欧盟 AI 法案对中国 AI 企业的影响
+/r 欧盟 AI 法案对中国 AI 企业的影响
 ```
 分析：合规要求、影响范围、应对策略。
 

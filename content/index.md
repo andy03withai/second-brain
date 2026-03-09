@@ -21,10 +21,10 @@ description: 收集、整理、学习、消化、发布
 
 深度调研：
 ```
-/research <主题> [--depth standard|deep|comprehensive]
+/r <主题> [--depth standard|deep|comprehensive]
 ```
 
-> ⚠️ **重要**：只有以 `/sb` 或 `/research` 开头的消息才会触发工作流。
+> ⚠️ **重要**：只有以 `/sb` 或 `/r` 开头的消息才会触发工作流。
 
 ---
 
@@ -34,7 +34,7 @@ description: 收集、整理、学习、消化、发布
 
 - [[deep-research/index|📊 调研报告列表]]
 
-**使用方式**：`/research AI Agent 在电商领域的应用`
+**使用方式**：`/r AI Agent 在电商领域的应用`
 
 **深度级别**：standard (3-4k字) | deep (5-7k字) | comprehensive (8k+字)
 
