@@ -108,9 +108,21 @@ def save_and_push(url, note=""):
     
     print(f"✅ 已创建: {filename}")
     
+    # 应用 sb-paper：论文检测（最先执行，可能改变文章结构）
+    try:
+        result = sp.run(
+            ['python3', '/root/.openclaw/workspace/second-brain/scripts/paper_processor.py', filepath, url],
+            capture_output=True,
+            text=True,
+            timeout=10
+        )
+        if result.returncode == 0:
+            print(result.stdout)
+    except Exception as e:
+        print(f"⚠️ 论文处理跳过: {e}")
+    
     # 应用 sb-plain：白话化处理
     try:
-        import subprocess as sp
         result = sp.run(
             ['python3', '/root/.openclaw/workspace/second-brain/scripts/plain_processor.py', filepath],
             capture_output=True,
