@@ -108,7 +108,7 @@ def save_and_push(url, note=""):
     
     print(f"✅ 已创建: {filename}")
     
-    # 尝试白话化处理（如果内容可获取）
+    # 应用 sb-plain：白话化处理
     try:
         import subprocess as sp
         result = sp.run(
@@ -121,6 +121,32 @@ def save_and_push(url, note=""):
             print(result.stdout)
     except Exception as e:
         print(f"⚠️ 白话化处理跳过: {e}")
+    
+    # 应用 sb-writes：写作消化
+    try:
+        result = sp.run(
+            ['python3', '/root/.openclaw/workspace/second-brain/scripts/writes_processor.py', filepath, note],
+            capture_output=True,
+            text=True,
+            timeout=10
+        )
+        if result.returncode == 0:
+            print(result.stdout)
+    except Exception as e:
+        print(f"⚠️ 写作消化跳过: {e}")
+    
+    # 应用 sb-card：生成知识卡片
+    try:
+        result = sp.run(
+            ['python3', '/root/.openclaw/workspace/second-brain/scripts/card_processor.py', filepath],
+            capture_output=True,
+            text=True,
+            timeout=10
+        )
+        if result.returncode == 0:
+            print(result.stdout)
+    except Exception as e:
+        print(f"⚠️ 卡片生成跳过: {e}")
     
     repo_path = "/root/.openclaw/workspace/second-brain"
     try:
