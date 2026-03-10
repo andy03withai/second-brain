@@ -60,6 +60,9 @@ description: 收集、整理、学习、消化、发布
 
 ## 📚 知识库 (Articles)
 
+### 我的见解
+- [[articles/my-insights-agent-skills|Agent Skills 完全指南 - 我的核心见解]] - 2026-03-10
+
 ### 最新收录
 - [[articles/agency-agents|Agency Agents - Agent组成的公司]] - 2026-03-10
 - [[articles/20260309-testing-skills|Testing Agent Skills: 实战指南]] - 2026-03-09
