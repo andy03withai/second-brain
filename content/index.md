@@ -80,6 +80,16 @@ description: 收集、整理、学习、消化、发布
 
 ---
 
+## 📖 书单 (Books)
+
+想读、在读和已读的书籍：
+
+- [[books/distributed-computing/designing-data-intensive-applications|设计数据密集型应用]] - 🔵 想读 - 分布式系统经典
+
+**查看全部**: [[books/index|📚 我的书单]]
+
+---
+
 ## 🏷️ 标签浏览
 
 - [[tags/杰文斯悖论|杰文斯悖论]] - 效率与消耗的悖论
