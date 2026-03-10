@@ -5,97 +5,120 @@ description: 按时间顺序浏览第二大脑的所有内容更新
 
 # 🕐 Timeline - 时间线
 
-按时间顺序探索第二大脑的成长历程。
+探索第二大脑的成长历程。
 
 ---
 
 ## 2026年3月
 
-### 3月10日 周一
+### 📅 3月10日 周一
 
-<div class="timeline-entry">
+<div class="timeline-cards">
 
-#### 📚 新增书单系统
-- 创建 `/book` 命令记录书籍和读书笔记
-- 六大分类：计算机系统、分布式计算、数据系统、自动驾驶、AI与Agents、人文社科
-- [[books/index|查看书单]]
+<div class="card">
+<div class="card-icon">📚</div>
+<div class="card-content">
+<div class="card-title">新增书单系统</div>
+<div class="card-desc">创建 /book 命令，支持六大分类：计算机系统、分布式计算、数据系统、自动驾驶、AI与Agents、人文社科</div>
+<div class="card-link"><a href="books/index">查看书单 →</a></div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon">🔬</div>
+<div class="card-content">
+<div class="card-title">Agent Skills 深度调研</div>
+<div class="card-desc">8000字 comprehensive 报告，系统介绍 5W1H 框架，拆解 Top 10 Skills</div>
+<div class="card-link"><a href="deep-research/2026-03-10-agent-skills-guide">阅读报告 →</a></div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon">🏷️</div>
+<div class="card-content">
+<div class="card-title">标签系统优化</div>
+<div class="card-desc">创建5个核心标签索引：AI、Agent、技能设计、李继刚、杰文斯悖论</div>
+<div class="card-link"><a href="tags/index">浏览标签 →</a></div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon">💡</div>
+<div class="card-content">
+<div class="card-title">个人见解：Agent Skills</div>
+<div class="card-desc">Skills 是 AI 时代的函数库、渐进式披露设计、自进化方向思考</div>
+<div class="card-link"><a href="articles/my-insights-agent-skills">阅读见解 →</a></div>
+</div>
+</div>
 
 </div>
 
-<div class="timeline-entry">
+### 📅 3月9日 周日
 
-#### 🔬 完成 Agent Skills 深度调研
-- [[deep-research/2026-03-10-agent-skills-guide|Agent Skills 完全指南]]
-- 8000字 comprehensive 级别报告
-- 系统介绍 5W1H 框架，拆解 Top 10 Skills
+<div class="timeline-cards">
 
+<div class="card">
+<div class="card-icon">📥</div>
+<div class="card-content">
+<div class="card-title">杰文斯悖论主题收录</div>
+<div class="card-desc">收录播客+文章，探讨 AI 时代的效率陷阱</div>
+<div class="card-link"><a href="articles/20260309-theme-index">查看主题 →</a></div>
+</div>
 </div>
 
-<div class="timeline-entry">
-
-#### 🏷️ 优化标签系统
-- 创建 5 个核心标签索引页
-- [[tags/AI|AI]]、[[tags/agent|Agent]]、[[tags/技能设计|技能设计]]、[[tags/李继刚|李继刚]]、[[tags/杰文斯悖论|杰文斯悖论]]
-
+<div class="card">
+<div class="card-icon">🎙️</div>
+<div class="card-content">
+<div class="card-title">李继刚专访</div>
+<div class="card-desc">工作流与技能设计，6个实用 Claude Code 技能</div>
+<div class="card-link"><a href="articles/20260309-69a64629de29766da93331ec">查看详情 →</a></div>
+</div>
 </div>
 
-<div class="timeline-entry">
-
-#### 💡 添加个人见解
-- [[articles/my-insights-agent-skills|Agent Skills 核心见解]]
-- 思考：Skills 是 AI 时代的"函数库"、渐进式披露、自进化方向
+<div class="card">
+<div class="card-icon">📓</div>
+<div class="card-content">
+<div class="card-title">启动每日日记</div>
+<div class="card-desc">记录每日核心思考和阅读</div>
+<div class="card-link"><a href="daily/index">查看日记 →</a></div>
+</div>
+</div>
 
 </div>
 
 ---
 
-### 3月9日 周日
+## 统计概览
 
-<div class="timeline-entry">
-
-#### 📥 主题收录：杰文斯悖论
-- [[articles/20260309-theme-index|杰文斯悖论与 AI 时代]]
-- 收录播客+文章，探讨效率陷阱
-
+<div class="stats-cards">
+<div class="stat-card">
+<div class="stat-number">10+</div>
+<div class="stat-label">文章收录</div>
 </div>
-
-<div class="timeline-entry">
-
-#### 📄 多篇文章收录
-- [[articles/20260309-69a64629de29766da93331ec|李继刚专访播客]] - 技能设计
-- [[articles/20260309-skills|李继刚 Skills 集合]]
-- [[articles/20260309-practices|Agent Skills 最佳实践]]
-- [[articles/20260309-testing-skills|Testing Agent Skills 实战指南]]
-- [[articles/20260309-autoresearch|Karpathy AutoResearch]]
-
+<div class="stat-card">
+<div class="stat-number">1</div>
+<div class="stat-label">深度调研</div>
 </div>
-
-<div class="timeline-entry">
-
-#### 📅 启动每日日记
-- 记录每日核心思考和阅读
-- [[daily/index|查看日记]]
-
+<div class="stat-card">
+<div class="stat-number">1</div>
+<div class="stat-label">书籍记录</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">9</div>
+<div class="stat-label">技能文档</div>
+</div>
 </div>
 
 ---
 
-## 时间线统计
+## 浏览方式
 
-| 类型 | 数量 | 趋势 |
-|------|------|------|
-| 文章收录 | 10+ | 📈 |
-| 深度调研 | 1 | 📈 |
-| 书籍记录 | 1 | 📈 |
-| 技能文档 | 9 | 📈 |
-
----
-
-## 查看方式
-
-- **按日期**: 本页面时间线
-- **按主题**: [[tags/index|标签浏览]]
-- **按类型**: [[articles/index|文章]] | [[deep-research/index|深度调研]] | [[books/index|书单]]
+<div class="view-options">
+<a href="tags/index" class="view-btn">🏷️ 按标签</a>
+<a href="articles/index" class="view-btn">📄 按文章</a>
+<a href="deep-research/index" class="view-btn">🔬 按调研</a>
+<a href="books/index" class="view-btn">📚 按书单</a>
+</div>
 
 ---
 
