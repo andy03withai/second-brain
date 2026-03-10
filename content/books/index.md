@@ -26,8 +26,8 @@ description: 阅读记录和读书笔记
 | 分类 | 数量 | 链接 |
 |------|------|------|
 | 💻 [[books/computer-systems/index|计算机系统]] | 0 | 系统架构、操作系统、网络 |
-| 🌐 [[books/distributed-computing/index|分布式计算]] | 1 | 分布式系统、一致性、共识算法 |
-| 🗄️ [[books/data-engineering/index|数据工程]] | 0 | 数据库、大数据、数据管道 |
+| 🌐 [[books/distributed-computing/index|分布式计算]] | 0 | 分布式系统、一致性、共识算法 |
+| 🗄️ [[books/data-systems/index|数据系统]] | 1 | 数据库、大数据、数据管道、分布式数据 |
 | 🚗 [[books/autonomous-driving/index|自动驾驶]] | 0 | 自动驾驶、机器人、VLA |
 | 🤖 [[books/ai-agents/index|AI 与 Agents]] | 0 | AI、大模型、智能体 |
 | 📖 [[books/humanities-social-sciences/index|人文社科]] | 0 | 历史、哲学、社会学、心理学 |

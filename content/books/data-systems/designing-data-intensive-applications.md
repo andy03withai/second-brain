@@ -1,7 +1,7 @@
 ---
 title: "设计数据密集型应用"
 author: "Martin Kleppmann"
-category: "分布式计算"
+category: "数据系统"
 status: "想读"
 source_url: "https://book.douban.com/subject/26176885/"
 publication_date: "2017"
@@ -12,7 +12,7 @@ amazon_rating_count: "8,234人"
 goodreads_rating: "4.7"
 goodreads_rating_count: "25,678人"
 date_added: "2026-03-10"
-tags: [分布式系统, 数据库, 数据工程, 经典]
+tags: [数据系统, 数据库, 分布式系统, 经典]
 aliases: ["DDIA", "数据密集型应用", "Designing Data-Intensive Applications"]
 ---
 
@@ -21,7 +21,7 @@ aliases: ["DDIA", "数据密集型应用", "Designing Data-Intensive Application
 **作者**: Martin Kleppmann  
 **原书名**: Designing Data-Intensive Applications  
 **出版年份**: 2017  
-**分类**: [[books/distributed-computing/index|分布式计算]]  
+**分类**: [[books/data-systems/index|数据系统]]  
 **状态**: 🔵 想读
 
 ## 简介
@@ -41,7 +41,7 @@ aliases: ["DDIA", "数据密集型应用", "Designing Data-Intensive Application
 
 ## 我的批注
 
-分布式系统经典，必读。朋友强烈推荐的。
+数据系统经典，必读。朋友强烈推荐的。
 
 ## 读书笔记
 
