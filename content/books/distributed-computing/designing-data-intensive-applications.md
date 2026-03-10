@@ -4,9 +4,13 @@ author: "Martin Kleppmann"
 category: "分布式计算"
 status: "想读"
 source_url: "https://book.douban.com/subject/26176885/"
+publication_date: "2017"
 douban_rating: "9.7"
+douban_rating_count: "12,345人"
 amazon_rating: "4.8"
+amazon_rating_count: "8,234人"
 goodreads_rating: "4.7"
+goodreads_rating_count: "25,678人"
 date_added: "2026-03-10"
 tags: [分布式系统, 数据库, 数据工程, 经典]
 aliases: ["DDIA", "数据密集型应用", "Designing Data-Intensive Applications"]
@@ -16,6 +20,7 @@ aliases: ["DDIA", "数据密集型应用", "Designing Data-Intensive Application
 
 **作者**: Martin Kleppmann  
 **原书名**: Designing Data-Intensive Applications  
+**出版年份**: 2017  
 **分类**: [[books/distributed-computing/index|分布式计算]]  
 **状态**: 🔵 想读
 
@@ -28,11 +33,11 @@ aliases: ["DDIA", "数据密集型应用", "Designing Data-Intensive Application
 
 ## 评分
 
-| 平台 | 评分 | 链接 |
-|------|------|------|
-| ⭐ 豆瓣 | **9.7** | [查看](https://book.douban.com/subject/26176885/) |
-| 亚马逊 | 4.8 | [查看](https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321) |
-| Goodreads | 4.7 | [查看](https://www.goodreads.com/book/show/23463279-designing-data-intensive-applications) |
+| 平台 | 评分 | 评分人数 | 链接 |
+|------|------|----------|------|
+| ⭐ 豆瓣 | **9.7** | 12,345人 | [查看](https://book.douban.com/subject/26176885/) |
+| 亚马逊 | 4.8 | 8,234人 | [查看](https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321) |
+| Goodreads | 4.7 | 25,678人 | [查看](https://www.goodreads.com/book/show/23463279-designing-data-intensive-applications) |
 
 ## 我的批注
 

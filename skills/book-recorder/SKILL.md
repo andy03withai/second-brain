@@ -105,16 +105,22 @@ author: "{作者}"
 category: "{分类}"
 status: "想读|在读|已读"
 source_url: "{原始链接}"
+publication_date: "YYYY"  # 出版年份
 douban_rating: "{豆瓣评分}"
+douban_rating_count: "{豆瓣评分人数}"  # 如：12,345人
 amazon_rating: "{亚马逊评分}"
+amazon_rating_count: "{亚马逊评分人数}"
 goodreads_rating: "{Goodreads评分}"
+goodreads_rating_count: "{Goodreads评分人数}"
 date_added: "YYYY-MM-DD"
 tags: [标签]
+aliases: [别名1, 别名2]
 ---
 
 # {书名}
 
 **作者**: {作者}  
+**出版年份**: YYYY  
 **分类**: {分类}  
 **状态**: {状态}
 
@@ -124,11 +130,11 @@ tags: [标签]
 
 ## 评分
 
-| 平台 | 评分 | 链接 |
-|------|------|------|
-| 豆瓣 | {评分} | [链接] |
-| 亚马逊 | {评分} | [链接] |
-| Goodreads | {评分} | [链接] |
+| 平台 | 评分 | 评分人数 | 链接 |
+|------|------|----------|------|
+| 豆瓣 | {评分} | {人数} | [链接] |
+| 亚马逊 | {评分} | {人数} | [链接] |
+| Goodreads | {评分} | {人数} | [链接] |
 
 ## 我的批注
 
