@@ -188,6 +188,7 @@ def save_and_push(urls, note=""):
         # 单链接：直接处理
         filename = process_single_article(urls[0], note)
         created_files.append(filename)
+        primary_file = filename
     else:
         # 多链接：创建主索引 + 各子文章
         print(f"📝 检测到 {len(urls)} 个相关链接")
@@ -209,6 +210,7 @@ def save_and_push(urls, note=""):
             f.write(index_content)
         
         created_files.append(index_filename)
+        primary_file = index_filename
         print(f"✅ 已创建主题索引: {index_filename}")
     
     # 更新首页 index.md
@@ -239,13 +241,18 @@ def save_and_push(urls, note=""):
                       cwd=repo_path, check=True, capture_output=True)
         subprocess.run(['git', 'push', 'origin', 'main'], 
                       cwd=repo_path, check=True, capture_output=True)
-        print("🚀 已推送到 GitHub，网站将在 2-3 分钟后更新")
-        print(f"📖 查看地址: https://andy03withai.github.io/second-brain/")
+        
+        # 生成具体页面网址
+        article_name = primary_file.replace('.md', '')
+        page_url = f"https://andy03withai.github.io/second-brain/articles/{article_name}"
+        
+        print(f"🚀 已推送到 GitHub，网站将在 2-3 分钟后更新")
+        print(f"📖 页面地址: {page_url}")
+        
+        return page_url
     except subprocess.CalledProcessError as e:
         print(f"⚠️ Git 操作失败: {e}")
-        return False
-    
-    return True
+        return None
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

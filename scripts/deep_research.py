@@ -225,12 +225,18 @@ def save_and_push(topic, depth="standard"):
                       cwd=repo_path, check=True, capture_output=True)
         subprocess.run(['git', 'push', 'origin', 'main'], 
                       cwd=repo_path, check=True, capture_output=True)
-        print("🚀 已推送到 GitHub，网站将在 2-3 分钟后更新")
-        print(f"📖 查看地址: https://andy03withai.github.io/second-brain/deep-research/")
-        return True
+        
+        # 生成具体页面网址
+        report_name = filename.replace('.md', '')
+        page_url = f"https://andy03withai.github.io/second-brain/deep-research/{report_name}"
+        
+        print(f"🚀 已推送到 GitHub，网站将在 2-3 分钟后更新")
+        print(f"📖 页面地址: {page_url}")
+        
+        return page_url
     except subprocess.CalledProcessError as e:
         print(f"⚠️ Git 操作失败: {e}")
-        return False
+        return None
 
 def main():
     if len(sys.argv) < 2:
