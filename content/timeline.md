@@ -18,9 +18,9 @@ description: 按时间顺序浏览第二大脑的所有内容更新
 <div class="card">
 <div class="card-icon">📄</div>
 <div class="card-content">
-<div class="card-title">文章收录: 来自 arxiv.org</div>
-<div class="card-desc">新文章已收录到第二大脑</div>
-<div class="card-link"><a href="articles/20260311-260300718">阅读文章 →</a></div>
+<div class="card-title">论文收录: SkillCraft - Can LLM Agents Learn to Use Tools Skillfully?</div>
+<div class="card-desc">arXiv 2026-02-28 | 评估LLM Agent学习和复用工具技能的能力</div>
+<div class="card-link"><a href="articles/20260311-skillcraft-can-llm-agents-learn-to-use-tools-skillfully">阅读论文 →</a></div>
 </div>
 </div>
 
