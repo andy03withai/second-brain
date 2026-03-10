@@ -11,16 +11,16 @@ description: 自动采集的信息源，每日更新
 
 | 主题 | 说明 | 历史简报 |
 |------|------|----------|
-| [[input/ai/index|AI 前沿]] | 大模型、算法、训练优化 | 查看历史 → |
-| [[input/agent/index|Agent 智能体]] | 智能体架构、工具调用、Multi-Agent | 查看历史 → |
-| [[input/autonomous-driving/index|自动驾驶]] | 端到端、VLA、BEV、Occupancy | 查看历史 → |
-| [[input/multimodal/index|多模态]] | Vision-Language、多模态学习 | 查看历史 → |
-| [[input/embodied-intelligence/index|具身智能]] | 机器人、VLA、操作学习 | 查看历史 → |
+| 🤖 [[input/ai/index\|AI 前沿]] | 大模型、算法、训练优化 | [[input/ai/index\|📚 查看历史]] |
+| 🎯 [[input/agent/index\|Agent 智能体]] | 智能体架构、工具调用、Multi-Agent | [[input/agent/index\|📚 查看历史]] |
+| 🚗 [[input/autonomous-driving/index\|自动驾驶]] | 端到端、VLA、BEV、Occupancy | [[input/autonomous-driving/index\|📚 查看历史]] |
+| 👁️ [[input/multimodal/index\|多模态]] | Vision-Language、多模态学习 | [[input/multimodal/index\|📚 查看历史]] |
+| 🦾 [[input/embodied-intelligence/index\|具身智能]] | 机器人、VLA、操作学习 | [[input/embodied-intelligence/index\|📚 查看历史]] |
 
 ## 📅 今日简报
 
-- [[input/20260310/index|2026年03月10日 - 每日简报总览]] ⭐ 最新
-- [[input/20260309-index|2026年03月09日 - 每日简报总览]]
+- [[input/20260311/index|2026年03月11日 - 每日简报总览]] ⭐ 最新
+- [[input/20260310/index|2026年03月10日 - 每日简报总览]]
 
 ## 使用方式
 

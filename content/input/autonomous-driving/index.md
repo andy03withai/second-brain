@@ -11,8 +11,8 @@ description: 端到端、VLA、BEV、Occupancy最新进展
 
 | 日期 | 链接 | 亮点 |
 |------|------|------|
-| 2026-03-10 | [[input/20260310/autonomous-driving|自动驾驶 - 20260310]] | 轻舟VLA+世界模型、理想NOA推送、地平线SENNA |
-| 2026-03-09 | [[input/autonomous-driving/20260309|自动驾驶 - 20260309]] | (旧版目录结构) |
+| 2026-03-11 | [[input/20260311/autonomous-driving\|自动驾驶 - 20260311]] | (今日简报) |
+| 2026-03-10 | [[input/20260310/autonomous-driving\|自动驾驶 - 20260310]] | 轻舟VLA+世界模型、理想NOA推送、地平线SENNA |
 
 ## 🔗 相关主题
 
