@@ -215,17 +215,40 @@ def save_and_push(urls, note=""):
     
     # 更新首页 index.md
     print("\n📝 更新首页文章列表...")
-    for filename in created_files[:5]:  # 最多更新前5篇文章（避免过多）
-        filepath = f"/root/.openclaw/workspace/second-brain/content/articles/{filename}"
-        try:
-            subprocess.run(
-                ['python3', '/root/.openclaw/workspace/second-brain/scripts/index_updater.py', '--article', filepath],
-                check=True,
-                capture_output=True
-            )
-        except subprocess.CalledProcessError:
-            pass  # 静默跳过错误
-    print("✅ 首页已更新")
+    primary_filepath = f"/root/.openclaw/workspace/second-brain/content/articles/{primary_file}"
+    try:
+        subprocess.run(
+            ['python3', '/root/.openclaw/workspace/second-brain/scripts/index_updater.py', '--article', primary_filepath],
+            check=True,
+            capture_output=True
+        )
+        print("✅ 首页已更新")
+    except subprocess.CalledProcessError:
+        pass  # 静默跳过错误
+    
+    # 从文件读取标题
+    title = primary_file.replace('.md', '')
+    try:
+        with open(primary_filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
+            import re
+            title_match = re.search(r'title:\s*"([^"]+)"', content)
+            if title_match:
+                title = title_match.group(1)
+    except:
+        pass
+    
+    # 更新时间线
+    print("\n📝 更新时间线...")
+    try:
+        subprocess.run(
+            ['python3', '/root/.openclaw/workspace/second-brain/scripts/timeline_updater.py', '--article', primary_filepath, title],
+            check=True,
+            capture_output=True
+        )
+        print("✅ 时间线已更新")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️ 时间线更新失败: {e}")
     
     # Git 提交
     repo_path = "/root/.openclaw/workspace/second-brain"

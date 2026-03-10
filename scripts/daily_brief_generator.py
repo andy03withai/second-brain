@@ -513,6 +513,18 @@ def main():
     index_path = generate_daily_index(date_str, topics_generated)
     print(f"\n✅ 总索引: {index_path}")
     
+    # 更新时间线
+    print("\n📝 更新时间线...")
+    try:
+        subprocess.run(
+            ['python3', '/root/.openclaw/workspace/second-brain/scripts/timeline_updater.py', '--daily', date_str],
+            check=True,
+            capture_output=True
+        )
+        print("✅ 时间线已更新")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️ 时间线更新失败: {e}")
+    
     # 更新首页 index.md
     print("\n📝 更新首页 index.md...")
     try:

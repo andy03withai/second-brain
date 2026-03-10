@@ -216,6 +216,18 @@ def save_and_push(topic, depth="standard"):
     except subprocess.CalledProcessError as e:
         print(f"⚠️ 首页更新失败: {e}")
     
+    # 更新时间线
+    print("📝 更新时间线...")
+    try:
+        subprocess.run(
+            ['python3', '/root/.openclaw/workspace/second-brain/scripts/timeline_updater.py', '--research', filepath, f"{topic} 深度调研报告"],
+            check=True,
+            capture_output=True
+        )
+        print("✅ 时间线已更新")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️ 时间线更新失败: {e}")
+    
     # Git 提交
     repo_path = "/root/.openclaw/workspace/second-brain"
     try:
