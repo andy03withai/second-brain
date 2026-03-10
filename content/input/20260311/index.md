@@ -8,41 +8,52 @@ tags: [daily-brief, index]
 
 > **快速跳转**: [[ai|🤖 AI前沿]] | [[agent|🎯 Agent]] | [[autonomous-driving|🚗 自动驾驶]] | [[multimodal|👁️ 多模态]] | [[embodied-intelligence|🦾 具身智能]]
 
+## 📊 今日热点速览
+
+### 🔥 AI大模型
+- OpenAI确定2026年Q4 IPO计划，估值或达8400亿美元
+- 2026年AI大模型排名：GPT-5.2领先，DeepSeek-V4国产崛起
+- Anthropic融资扩展基础设施
+
+### 🤖 Agent智能体
+- AI Agent智能体技术发展报告（2026）发布
+- 深圳启动AI智能体应用工程师培训
+- Cadence推出ChipStack AI Super Agent
+
+### 🚗 自动驾驶
+- 轻舟智航发布VLA+世界模型架构
+- 理想AD Pro城区NOA推送开启普及浪潮
+- 地平线SENNA开环测试全球第一
+
+### 👁️ 多模态AI
+- 上海AI实验室开源书生·万象3.5模型
+- Dify 2026支持多模态Agent构建
+- Glyph开源框架发布
+
+### 🦾 具身智能
+- 小米开源机器人VLA大模型Xiaomi-Robotics-0
+- 荣耀发布首款消费级人形机器人，8月量产
+- 人形机器人标准体系(2026版)发布
+
 ## 各主题简报
 
-| 主题 | 状态 | 链接 |
+| 主题 | 说明 | 链接 |
 |------|------|------|
-| 🤖 AI 前沿 | ⏳ 生成中 | [[input/20260311/ai\|AI 前沿]] |
-| 🎯 Agent 智能体 | ⏳ 生成中 | [[input/20260311/agent\|Agent 智能体]] |
-| 🚗 自动驾驶 | ⏳ 生成中 | [[input/20260311/autonomous-driving\|自动驾驶]] |
-| 👁️ 多模态 | ⏳ 生成中 | [[input/20260311/multimodal\|多模态]] |
-| 🦾 具身智能 | ⏳ 生成中 | [[input/20260311/embodied-intelligence\|具身智能]] |
+| 🤖 [[input/20260311/ai|AI 前沿]] | 大模型、算法、训练优化 | TOP 10 精选 |
+| 🎯 [[input/20260311/agent|Agent 智能体]] | 智能体架构、工具调用 | TOP 10 精选 |
+| 🚗 [[input/20260311/autonomous-driving|自动驾驶]] | 端到端、VLA、BEV | TOP 5 精选 |
+| 👁️ [[input/20260311/multimodal|多模态]] | Vision-Language、CLIP | TOP 6 精选 |
+| 🦾 [[input/20260311/embodied-intelligence|具身智能]] | 机器人、VLA | TOP 8 精选 |
 
-## 📊 今日数据来源 (v3.0 国际化)
+## 📈 信息来源
 
-### 国际科技媒体
-- **TechCrunch AI**: 初创公司与产品发布
-- **MIT Technology Review**: 研究突破与政策分析
-- **The Verge AI**: 消费科技与深度报道
-- **Wired AI**: 未来趋势与调查报道
-- **Ars Technica**: 技术深度分析
-
-### 国际AI Newsletter
-- **Import AI** (Jack Clark): 研究深度分析与政策
-- **The Batch** (Andrew Ng): 权威AI研究综述
-- **TLDR AI**: 简洁技术摘要
-- **The Rundown AI**: 快速工具/新闻更新
-- **Superhuman AI**: 生产力与商业应用
-
-### 学术资源
-- **arXiv**: 实时抓取 (cs.AI/LG/CL/CV/RO/MM)
-- **Hugging Face Daily Papers**: 社区投票Top10
-- **Semantic Scholar**: 引用数查询
-
-### 企业官方
-- **OpenAI/Anthropic/DeepMind/Google AI Blogs**
+- **InfoQ**: OpenAI IPO报道
+- **证券时报**: Anthropic融资动态
+- **MML Studio**: MWC 2026现场报道
+- **The AI Journal**: 行业深度分析
+- **上海AI实验室**: 开源模型发布
 
 ---
 
-*总索引生成于 06:30*
-*v3.0: 信息源国际化升级 - TechCrunch, MIT Tech Review, Import AI, etc.*
+*总索引生成于 07:30*
+*v3.1: 手动整理今日热点*
