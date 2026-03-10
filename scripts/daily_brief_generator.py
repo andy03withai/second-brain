@@ -513,6 +513,18 @@ def main():
     index_path = generate_daily_index(date_str, topics_generated)
     print(f"\n✅ 总索引: {index_path}")
     
+    # 更新首页 index.md
+    print("\n📝 更新首页 index.md...")
+    try:
+        subprocess.run(
+            ['python3', '/root/.openclaw/workspace/second-brain/scripts/index_updater.py', '--daily', date_str],
+            check=True,
+            capture_output=True
+        )
+        print("✅ 首页已更新")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️ 首页更新失败: {e}")
+    
     # 推送到GitHub
     print("\n🚀 推送到 GitHub...")
     repo_path = "/root/.openclaw/workspace/second-brain"

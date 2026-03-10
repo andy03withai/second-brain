@@ -182,16 +182,18 @@ def process_single_article(url, note, related_urls=None):
 def save_and_push(urls, note=""):
     """保存文章并推送到 GitHub"""
     
+    created_files = []
+    
     if len(urls) == 1:
         # 单链接：直接处理
-        process_single_article(urls[0], note)
+        filename = process_single_article(urls[0], note)
+        created_files.append(filename)
     else:
         # 多链接：创建主索引 + 各子文章
         print(f"📝 检测到 {len(urls)} 个相关链接")
         print()
         
         # 先创建各子文章
-        created_files = []
         for i, url in enumerate(urls, 1):
             print(f"[{i}/{len(urls)}] 处理: {url[:60]}...")
             filename = process_single_article(url, note, urls)
@@ -206,7 +208,22 @@ def save_and_push(urls, note=""):
         with open(index_filepath, 'w', encoding='utf-8') as f:
             f.write(index_content)
         
+        created_files.append(index_filename)
         print(f"✅ 已创建主题索引: {index_filename}")
+    
+    # 更新首页 index.md
+    print("\n📝 更新首页文章列表...")
+    for filename in created_files[:5]:  # 最多更新前5篇文章（避免过多）
+        filepath = f"/root/.openclaw/workspace/second-brain/content/articles/{filename}"
+        try:
+            subprocess.run(
+                ['python3', '/root/.openclaw/workspace/second-brain/scripts/index_updater.py', '--article', filepath],
+                check=True,
+                capture_output=True
+            )
+        except subprocess.CalledProcessError:
+            pass  # 静默跳过错误
+    print("✅ 首页已更新")
     
     # Git 提交
     repo_path = "/root/.openclaw/workspace/second-brain"

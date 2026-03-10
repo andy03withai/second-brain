@@ -222,7 +222,7 @@ tags: [ace-review, weekly]
 本周共 **{error_analysis['count']}** 次错误:
 
 """
-        for category, count in error_analysis['by_category'].most_common():
+        for category, count in sorted(error_analysis['by_category'].items(), key=lambda x: x[1], reverse=True):
             report += f"- **{category}**: {count}次\n"
         
         if error_analysis['top_issues']:
