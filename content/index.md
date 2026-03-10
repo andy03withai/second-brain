@@ -66,9 +66,9 @@ description: 收集、整理、学习、消化、发布
 - [[articles/my-insights-agent-skills|Agent Skills 完全指南 - 我的核心见解]] - 2026-03-10
 
 ### 最新收录
+- [[articles/20260311-260300718|SkillCraft: Can LLM Agents Learn to Use Tools Skillfully?]] - 2026-03-11
 - [[articles/agency-agents|Agency Agents - Agent组成的公司]] - 2026-03-10
 - [[articles/20260309-testing-skills|Testing Agent Skills: 实战指南]] - 2026-03-09
-- [[articles/20260309-autoresearch|Karpathy AutoResearch]] - 2026-03-09
 
 ### 主题收录
 - [[articles/20260309-theme-index|杰文斯悖论与 AI 时代]] - 播客+文章，效率陷阱的思考
