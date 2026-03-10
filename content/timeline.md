@@ -16,6 +16,16 @@ description: 按时间顺序浏览第二大脑的所有内容更新
 <div class="timeline-cards">
 
 <div class="card">
+<div class="card-icon">📄</div>
+<div class="card-content">
+<div class="card-title">文章收录: 来自 arxiv.org</div>
+<div class="card-desc">新文章已收录到第二大脑</div>
+<div class="card-link"><a href="articles/20260311-260300718">阅读文章 →</a></div>
+</div>
+</div>
+
+
+<div class="card">
 <div class="card-icon">📰</div>
 <div class="card-content">
 <div class="card-title">每日简报 - 3月11日 周三</div>
