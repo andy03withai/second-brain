@@ -1,5 +1,5 @@
 ---
-title: "来自 36kr.com"
+title: "当造梦成本归零｜影视行业的未来五年"
 date: 2026-03-11
 source: "https://36kr.com/p/3702322702922116"
 tags: [待分类]

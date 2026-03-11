@@ -18,9 +18,9 @@ description: 按时间顺序浏览第二大脑的所有内容更新
 <div class="card">
 <div class="card-icon">📄</div>
 <div class="card-content">
-<div class="card-title">文章收录: 来自 36kr.com</div>
-<div class="card-desc">新文章已收录到第二大脑</div>
-<div class="card-link"><a href="articles/20260311-3702322702922116">阅读文章 →</a></div>
+<div class="card-title">文章收录: 当造梦成本归零｜影视行业的未来五年</div>
+<div class="card-desc">36氪特邀作者深度分析AI对影视行业的影响，2万字长文</div>
+<div class="card-link"><a href="articles/20260311-dang-zaomeng-chengben-guiling-yingshi-weilai-wunian">阅读文章 →</a></div>
 </div>
 </div>
 
