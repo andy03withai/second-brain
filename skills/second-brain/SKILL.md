@@ -1,10 +1,10 @@
 ---
 name: second-brain
-description: "第二大脑文章收录工作流。处理 /sb 命令，自动提取内容、生成白话摘要、写作消化提示、知识卡片，推送到 GitHub Pages。用于构建个人知识管理系统。"
-version: "1.0.0"
+description: "第二大脑文章收录工作流。处理 /sb 命令，自动提取内容、生成白话摘要、写作消化提示、知识卡片，推送到 GitHub Pages。自动更新首页和时间线。用于构建个人知识管理系统。"
+version: "1.1.0"
 ---
 
-# second-brain: 第二大脑收录
+# second-brain: 第二大脑收录 v1.1
 
 完整的文章收录工作流。输入链接，输出结构化知识笔记。
 
@@ -24,17 +24,6 @@ version: "1.0.0"
 /sb https://podcast.com/ep1 https://blog.com/transcript 播客+文字稿
 ```
 
-### 每日简报
-
-每天早上 **6:00**（上海时间）自动生成5个主题的简报：
-- AI 前沿
-- Agent 智能体
-- 自动驾驶大模型
-- 多模态数据
-- 具身智能
-
-简报存储在 `content/input/` 目录。
-
 ## 工作流步骤
 
 ### 1. 解析命令
@@ -43,37 +32,37 @@ version: "1.0.0"
 ### 2. 创建文章
 生成基础 Markdown 文件到 `content/articles/`。
 
-### 3. 应用技能处理
-依次调用 4 个子处理器：
+### 3. 应用处理器
+根据内容类型选择处理器：
 
-| 顺序 | 处理器 | 功能 |
+| 类型 | 处理器 | 功能 |
 |------|--------|------|
-| 1 | paper | 检测 arXiv，生成论文速读模板 |
-| 2 | plain | 白话化：一句话 + 一段话摘要 |
-| 3 | writes | 写作消化：提取论点 + 生成问题 |
-| 4 | card | 知识卡片：生成 HTML 视觉卡片 |
+| 学术论文 | paper | 检测 arXiv，生成论文速读模板 |
+| 普通文章 | plain | 白话化：一句话 + 一段话摘要 |
+| 所有文章 | writes | 写作消化：提取论点 + 生成问题 |
+| 所有文章 | card | 知识卡片：生成 HTML 视觉卡片 |
 
-### 4. 提交部署
-```bash
-git add .
-git commit -m "Add article: ..."
-git push origin main
-```
+### 4. 自动更新
+- 更新 `index.md` 最新收录列表
+- 更新 `timeline.md` 时间线
+- 推送到 GitHub
 
-GitHub Actions 自动构建部署到 Pages。
+### 5. 返回链接
+返回具体文章页面地址（包含文章标题，而非纯数字ID）。
+
+## 用户偏好
+
+### URL 格式偏好
+- **必须包含文章标题**：如 `articles/20260311-skillcraft-llm-agent-skills`
+- **避免纯数字ID**：如 `articles/20260311-260300718` ❌
+- **目的**：方便一眼识别内容
+
+### 返回格式偏好
+- **必须返回具体页面网址**：如 `https://andy03withai.github.io/second-brain/articles/20260311-article-name`
+- **不能返回根地址**：如 `https://andy03withai.github.io/second-brain/` ❌
+- **说明**：GitHub Pages 部署需要 2-3 分钟
 
 ## 配置要求
-
-### 环境变量
-```bash
-export SB_REPO="/path/to/second-brain"
-export SB_CONTENT="$SB_REPO/content/articles"
-```
-
-### 依赖
-- Python 3.8+
-- Git
-- Quartz 站点结构
 
 ### 文件结构
 ```
@@ -84,7 +73,9 @@ second-brain/
 │   ├── paper_processor.py    # 论文检测
 │   ├── plain_processor.py    # 白话化
 │   ├── writes_processor.py   # 写作消化
-│   └── card_processor.py     # 知识卡片
+│   ├── card_processor.py     # 知识卡片
+│   ├── index_updater.py      # 首页自动更新
+│   └── timeline_updater.py   # 时间线自动更新
 └── .github/workflows/    # 自动部署
 ```
 
@@ -94,7 +85,7 @@ second-brain/
 
 ```markdown
 ---
-title: "来源域名"
+title: "文章标题"
 date: YYYY-MM-DD
 source: "URL"
 tags: [待分类]
@@ -114,31 +105,28 @@ tags: [待分类]
 - 写作问题
 - 思考方向
 
-## 信息增量
-| 概念 | 本资料 | 当前认知 |
-...
-
 ## 我的批注
 用户原始批注
 ```
 
 ## 使用示例
 
-### 基本用法
-```
-/sb https://github.com/mgechev/skills-best-practices
-```
-
-### 带批注
-```
-/sb https://xiaoyuzhoufm.com/episode/xxx 李继刚专访，值得学习
-```
-
 ### 论文链接
 ```
 /sb https://arxiv.org/abs/2501.12345
 ```
-自动启用论文速读模式。
+自动启用论文速读模式，URL 将包含论文标题。
+
+### 普通文章
+```
+/sb https://36kr.com/p/3702322702922116
+```
+自动提取文章标题，生成友好 URL。
+
+### 带批注
+```
+/sb https://example.com/article 这篇文章关于...
+```
 
 ## 注意事项
 
