@@ -73,6 +73,9 @@ description: 收集、整理、学习、消化、发布
 - [[articles/agency-agents|Agency Agents - Agent组成的公司]] - 2026-03-10
 - [[articles/20260309-testing-skills|Testing Agent Skills: 实战指南]] - 2026-03-09
 
+### 论文精读
+- [[papers/20260312-multimodal-data-storage-retrieval-embodied-ai-survey|Multimodal Data Storage and Retrieval for Embodied AI: A Survey]] - 具身智能多模态数据存储与检索综述 (2026-03-12)
+
 ### 主题收录
 - [[articles/20260309-theme-index|杰文斯悖论与 AI 时代]] - 播客+文章，效率陷阱的思考
 
