@@ -88,6 +88,16 @@ description: 收集、整理、学习、消化、发布
 
 ---
 
+## 🛠️ 技能设计 (Skills)
+
+我设计的 Agent Skills，解决实际工作中的问题：
+
+- [[skills/pre-publish-testing|发布前测试流程]] - 验证内容完整性，避免 404 错误
+
+**查看全部**: [[skills/index|🛠️ 所有 Skills]]
+
+---
+
 ## 📖 书单 (Books)
 
 想读、在读和已读的书籍：
