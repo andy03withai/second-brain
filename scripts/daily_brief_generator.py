@@ -600,6 +600,24 @@ def main():
         import traceback
         traceback.print_exc()
     
+    # 推送到GitHub前执行测试
+    print("\n🔍 执行发布前测试...")
+    try:
+        result = subprocess.run(
+            ['python3', '/root/.openclaw/workspace/skills/pre-publish-testing/scripts/test_before_publish.py'],
+            capture_output=True,
+            text=True
+        )
+        print(result.stdout)
+        if result.returncode != 0:
+            print("⚠️ 测试未通过，停止推送")
+            print(result.stderr)
+            return
+    except Exception as e:
+        print(f"⚠️ 测试执行失败: {e}")
+        import traceback
+        traceback.print_exc()
+    
     # 推送到GitHub
     print("\n🚀 推送到 GitHub...")
     repo_path = "/root/.openclaw/workspace/second-brain"
