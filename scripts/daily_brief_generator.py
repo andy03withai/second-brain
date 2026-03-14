@@ -400,6 +400,54 @@ tags: [daily-brief, {topic_key}]
     print(f"  ✅ 已生成: {filepath}")
     return filepath
 
+def update_input_index(date_str):
+    """更新 input/index.md - 将历史链接更新为今日链接"""
+    input_index_path = "/root/.openclaw/workspace/second-brain/content/input/index.md"
+    date_display = datetime.strptime(date_str, '%Y%m%d').strftime('%Y年%m月%d日')
+    
+    try:
+        with open(input_index_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # 更新主题表格中的链接 - 将 "查看历史" 改为指向今日简报
+        topics = ['ai', 'agent', 'autonomous-driving', 'multimodal', 'embodied-intelligence']
+        
+        for topic_key in topics:
+            # 替换 "查看历史" 链接为今日链接
+            # 旧格式: [[input/ai/index\|📚 查看历史]]
+            # 新格式: [[input/YYYYMMDD/ai|📅 今日]]
+            old_link = f"[[input/{topic_key}/index\\|📚 查看历史]]"
+            new_link = f"[[input/{date_str}/{topic_key}|📅 今日]]"
+            content = content.replace(old_link, new_link)
+        
+        # 更新 "今日简报" 部分
+        new_brief_line = f"- [[input/{date_str}/index|{date_display} - 每日简报总览]] ⭐ 最新"
+        
+        # 检查是否已存在该日期
+        if date_str not in content:
+            # 移除之前条目的 ⭐ 最新标记
+            content = content.replace(" ⭐ 最新", "")
+            
+            # 在 "## 📅 今日简报" 部分添加新条目
+            if "## 📅 今日简报" in content:
+                if "*等待每日简报生成...*" in content:
+                    # 第一次生成，替换占位符
+                    content = content.replace("*等待每日简报生成...*", new_brief_line)
+                else:
+                    # 已有历史简报，添加新条目到顶部
+                    content = content.replace("## 📅 今日简报\n\n", f"## 📅 今日简报\n\n{new_brief_line}\n")
+        
+        with open(input_index_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+        
+        print(f"  ✅ input/index.md 已更新: {date_display}")
+        return True
+    except Exception as e:
+        print(f"  ❌ 更新 input/index.md 失败: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
 def generate_daily_index(date_str, topics_generated):
     """生成每日总索引"""
     date_display = datetime.strptime(date_str, '%Y%m%d').strftime('%Y年%m月%d日')
@@ -536,6 +584,16 @@ def main():
         print("✅ 首页已更新")
     except subprocess.CalledProcessError as e:
         print(f"⚠️ 首页更新失败: {e}")
+    
+    # 更新 input/index.md - 显示今日链接
+    print("\n📝 更新 input/index.md...")
+    try:
+        update_input_index(date_str)
+        print("✅ input/index.md 已更新")
+    except Exception as e:
+        print(f"⚠️ input/index.md 更新失败: {e}")
+        import traceback
+        traceback.print_exc()
     
     # 推送到GitHub
     print("\n🚀 推送到 GitHub...")
