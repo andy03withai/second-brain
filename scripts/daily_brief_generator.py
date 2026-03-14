@@ -536,7 +536,12 @@ def main():
     """主函数"""
     import urllib.parse  # 需要在main中用到
     
-    date_str = datetime.now().strftime('%Y%m%d')
+    # 支持命令行指定日期
+    if len(sys.argv) >= 3 and sys.argv[1] == '--date':
+        date_str = sys.argv[2]
+    else:
+        date_str = datetime.now().strftime('%Y%m%d')
+
     
     print(f"🤖 Ace 开始生成每日简报 v3.0 (国际化版) - {date_str}")
     print("=" * 60)
