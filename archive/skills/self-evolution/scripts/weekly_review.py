@@ -272,14 +272,16 @@ tags: [ace-review, weekly]
     with open(report_path, 'w', encoding='utf-8') as f:
         f.write(report)
     
-    # 同时放入input目录，可被第二大脑收录
-    input_path = f"{BASE_DIR}/content/input/ace-reviews/{week_str}.md"
-    os.makedirs(os.path.dirname(input_path), exist_ok=True)
+    # 同时放入input目录，可被第二大脑收录 (使用 index.md 格式以便 Hugo 生成页面)
+    input_dir = f"{BASE_DIR}/content/input/ace-reviews/{week_str}"
+    os.makedirs(input_dir, exist_ok=True)
+    input_path = f"{input_dir}/index.md"
     
     with open(input_path, 'w', encoding='utf-8') as f:
         f.write(report)
     
     print(f"✅ 复盘报告已生成: {report_path}")
+    print(f"✅ 已同步到: {input_path}")
     return report_path, report
 
 if __name__ == "__main__":

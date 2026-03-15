@@ -279,7 +279,7 @@ def main():
     
     print("\n" + "=" * 50)
     print(f"🎉 每日简报生成完成！")
-    print(f"📖 查看地址: https://andy03withai.github.io/second-brain/input/")
+    print(f"📖 查看地址: https://andy03withai.github.io/second-brain/input/{date_str}/")
 
 if __name__ == "__main__":
     main()
