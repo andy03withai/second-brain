@@ -11,11 +11,11 @@ description: 自动采集的信息源，每日更新
 
 | 主题 | 说明 | 今日简报 |
 |------|------|----------|
-| 🤖 [[input/ai/index\|AI 前沿]] | 大模型、算法、训练优化 | [[input/ai/index\|📚 查看历史]] |
-| 🎯 [[input/agent/index\|Agent 智能体]] | 智能体架构、工具调用、Multi-Agent | [[input/agent/index\|📚 查看历史]] |
-| 🚗 [[input/autonomous-driving/index\|自动驾驶]] | 端到端、VLA、BEV、Occupancy | [[input/autonomous-driving/index\|📚 查看历史]] |
-| 👁️ [[input/multimodal/index\|多模态]] | Vision-Language、多模态学习 | [[input/multimodal/index\|📚 查看历史]] |
-| 🦾 [[input/embodied-intelligence/index\|具身智能]] | 机器人、VLA、操作学习 | [[input/embodied-intelligence/index\|📚 查看历史]] |
+| 🤖 [[input/ai/index\|AI 前沿]] | 大模型、算法、训练优化 | [[input/20260315/ai|📅 今日]] |
+| 🎯 [[input/agent/index\|Agent 智能体]] | 智能体架构、工具调用、Multi-Agent | [[input/20260315/agent|📅 今日]] |
+| 🚗 [[input/autonomous-driving/index\|自动驾驶]] | 端到端、VLA、BEV、Occupancy | [[input/20260315/autonomous-driving|📅 今日]] |
+| 👁️ [[input/multimodal/index\|多模态]] | Vision-Language、多模态学习 | [[input/20260315/multimodal|📅 今日]] |
+| 🦾 [[input/embodied-intelligence/index\|具身智能]] | 机器人、VLA、操作学习 | [[input/20260315/embodied-intelligence|📅 今日]] |
 
 ## 📅 今日简报
 
