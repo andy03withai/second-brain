@@ -66,12 +66,16 @@ description: 收集、整理、学习、消化、发布
 - [[articles/my-insights-agent-skills|Agent Skills 完全指南 - 我的核心见解]] - 2026-03-10
 
 ### 最新收录
+- [[articles/20260316-llm-architecture-gallery|LLM Architecture Gallery：主流大模型架构一图对比]] - 2026-03-16
+- [[articles/20260314-db|来自 brentozar.com]] - 2026-03-14
+- [[articles/20260314-agentskillsh|来自 agentskill.sh]] - 2026-03-14
 - [[articles/20260312-ai-needs-pua|AI 也需要 PUA 吗？]] - 2026-03-12
+- [[articles/20260312-nanobot-task-pipeline|nanobot-task-pipeline: 任务流水线系统]] - 2026-03-12
 - [[articles/20260312-can-world-models-unlock-robotics|世界模型能否解锁通用机器人？]] - 2026-03-12
-- [[articles/20260311-dang-zaomeng-chengben-guiling-yingshi-weilai-wunian|当造梦成本归零｜影视行业的未来五年]] - 2026-03-11
 - [[articles/20260311-skillcraft-can-llm-agents-learn-to-use-tools-skillfully|SkillCraft: Can LLM Agents Learn to Use Tools Skillfully?]] - 2026-03-11
-- [[articles/agency-agents|Agency Agents - Agent组成的公司]] - 2026-03-10
-- [[articles/20260309-testing-skills|Testing Agent Skills: 实战指南]] - 2026-03-09
+- [[articles/20260311-dang-zaomeng-chengben-guiling-yingshi-weilai-wunian|当造梦成本归零｜影视行业的未来五年]] - 2026-03-11
+- [[articles/index|Articles - 文章收录]] - 2026-03-10
+- [[articles/harness-engineering-openai|Harness Engineering - AI时代的软件工程新范式]] - 2026-03-10
 
 ### 论文精读
 - [[papers/20260312-multimodal-data-storage-retrieval-embodied-ai-survey|Multimodal Data Storage and Retrieval for Embodied AI: A Survey]] - 具身智能多模态数据存储与检索综述 (2026-03-12)

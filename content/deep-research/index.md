@@ -18,7 +18,8 @@ description: 系统性深度调研报告，涵盖技术、商业、学术等多�
 
 | 日期 | 主题 | 深度 | 字数 | 链接 |
 |------|------|------|------|------|
-| 2026-03-10 | Agent Skills 完全指南 | comprehensive | ~8000 | [[deep-research/2026-03-10-agent-skills-guide|查看报告]] |
+| 2026-03-18 | Coding Agent 深度调研报告：从概念到实现 | standard | ~3000 | [[deep-research/2026-03-18-coding-agent-deep-research|查看报告]] |
+| 2026-03-10 | Agent Skills 完全指南：从入门到精通 | standard | ~4000 | [[deep-research/2026-03-10-agent-skills-guide|查看报告]] |
 
 ---
 
