@@ -83,40 +83,63 @@ INTERNATIONAL_SOURCES = {
 }
 
 def fetch_hf_daily_papers():
-    """获取 Hugging Face Daily Papers - 带快速失败机制"""
-    import socket
-    
-    # 先测试网络连通性（快速失败）
+    """获取 Hugging Face Daily Papers - 使用 HF Mirror"""
     try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(3)
-        result = sock.connect_ex(('huggingface.co', 443))
-        sock.close()
-        if result != 0:
-            print(f"   ⚠️ HF 网络不可达，跳过")
-            return []
-    except Exception:
-        return []
-    
-    try:
-        url = "https://huggingface.co/api/daily-papers"
+        # 使用 hf-mirror.com 的页面
+        url = "https://hf-mirror.com/papers"
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=8) as response:
-            data = json.loads(response.read().decode('utf-8'))
-            papers = []
-            for item in data.get('papers', [])[:10]:  # 取前10篇
-                papers.append({
-                    'title': item.get('title', ''),
-                    'summary': item.get('summary', '')[:200] + '...' if item.get('summary') else '',
-                    'url': item.get('paper', {}).get('url', ''),
-                    'arxiv_id': item.get('paper', {}).get('id', ''),
-                    'source': 'HF Daily',
-                    'upvotes': item.get('paper', {}).get('upvotes', 0),
-                    'thumbnail': item.get('paper', {}).get('thumbnail', '')
-                })
-            return papers
+        with urllib.request.urlopen(req, timeout=15) as response:
+            html = response.read().decode('utf-8')
+        
+        # 尝试多种方式提取论文数据
+        papers_data = []
+        
+        # 方式1: 查找 "papers":[{...}] 格式
+        papers_match = re.search(r'"papers":(\[.*?\]),"prevDate"', html, re.DOTALL)
+        if papers_match:
+            try:
+                papers_data = json.loads(papers_match.group(1))
+            except:
+                pass
+        
+        # 方式2: 如果没找到，尝试查找 window.__NUXT__
+        if not papers_data:
+            nuxt_match = re.search(r'window\.__NUXT__=([^<]+);</script>', html)
+            if nuxt_match:
+                try:
+                    nuxt_data = json.loads(nuxt_match.group(1))
+                    papers_data = nuxt_data.get('data', [{}])[0].get('papers', [])
+                except:
+                    pass
+        
+        if not papers_data:
+            print("   ⚠️ HF Mirror 未找到论文数据")
+            return []
+        
+        papers = []
+        for item in papers_data[:15]:  # 取前15篇
+            paper_info = item.get('paper', {})
+            papers.append({
+                'title': paper_info.get('title', ''),
+                'summary': paper_info.get('summary', '')[:250] + '...' if paper_info.get('summary') else '',
+                'url': f"https://arxiv.org/abs/{paper_info.get('id', '')}",
+                'arxiv_id': paper_info.get('id', ''),
+                'source': 'HF Daily',
+                'upvotes': item.get('upvotes', 0),
+                'thumbnail': paper_info.get('thumbnail', '')
+            })
+        
+        print(f"   ✅ HF Mirror: {len(papers)} 篇")
+        return papers
+        
+    except urllib.error.HTTPError as e:
+        print(f"   ⚠️ HF Mirror HTTP错误: {e.code}")
+    except urllib.error.URLError as e:
+        print(f"   ⚠️ HF Mirror 连接失败: {e.reason}")
+    except json.JSONDecodeError as e:
+        print(f"   ⚠️ HF Mirror JSON解析失败: {e}")
     except Exception as e:
-        print(f"   ⚠️ HF Daily 获取失败: {str(e)[:50]}")
+        print(f"   ⚠️ HF Mirror 获取失败: {str(e)[:60]}")
     return []
 
 def fetch_arxiv_papers(categories, max_results=30, days_back=3):
