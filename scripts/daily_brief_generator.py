@@ -83,11 +83,25 @@ INTERNATIONAL_SOURCES = {
 }
 
 def fetch_hf_daily_papers():
-    """获取 Hugging Face Daily Papers"""
+    """获取 Hugging Face Daily Papers - 带快速失败机制"""
+    import socket
+    
+    # 先测试网络连通性（快速失败）
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(3)
+        result = sock.connect_ex(('huggingface.co', 443))
+        sock.close()
+        if result != 0:
+            print(f"   ⚠️ HF 网络不可达，跳过")
+            return []
+    except Exception:
+        return []
+    
     try:
         url = "https://huggingface.co/api/daily-papers"
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=30) as response:
+        with urllib.request.urlopen(req, timeout=8) as response:
             data = json.loads(response.read().decode('utf-8'))
             papers = []
             for item in data.get('papers', [])[:10]:  # 取前10篇
@@ -102,24 +116,32 @@ def fetch_hf_daily_papers():
                 })
             return papers
     except Exception as e:
-        print(f"HF Daily Papers获取失败: {e}")
+        print(f"   ⚠️ HF Daily 获取失败: {str(e)[:50]}")
     return []
 
-def fetch_arxiv_papers(categories, max_results=30):
-    """获取arXiv论文（支持多分类）"""
+def fetch_arxiv_papers(categories, max_results=30, days_back=3):
+    """获取arXiv论文（支持多分类）- 扩大时间范围到最近N天"""
     try:
-        yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y%m%d')
+        # 扩大时间范围到最近几天，避免某天没有新论文
+        start_date = (datetime.now() - timedelta(days=days_back)).strftime('%Y%m%d')
         today = datetime.now().strftime('%Y%m%d')
         
         # 构建多分类查询
         cat_query = ' OR '.join([f'cat:{cat}' for cat in categories])
-        query = f'({cat_query}) AND submittedDate:[{yesterday}0000 TO {today}0000]'
+        query = f'({cat_query}) AND submittedDate:[{start_date}0000 TO {today}0000]'
         
-        url = f'http://export.arxiv.org/api/query?search_query={urllib.parse.quote(query)}&sortBy=submittedDate&sortOrder=descending&max_results={max_results}'
+        url = f'https://export.arxiv.org/api/query?search_query={urllib.parse.quote(query)}&sortBy=submittedDate&sortOrder=descending&max_results={max_results}'
+        
+        print(f"   🔍 arXiv: 查询最近{days_back}天 ({start_date} ~ {today})")
         
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=30) as response:
+        with urllib.request.urlopen(req, timeout=15) as response:
             content = response.read().decode('utf-8')
+            
+        # 检查是否返回错误
+        if 'Error 503' in content or 'Error 500' in content:
+            print(f"   ⚠️ arXiv 服务暂时不可用")
+            return []
             
         # 解析XML
         entries = re.findall(r'<entry[^>]*>(.*?)</entry>', content, re.DOTALL)
@@ -151,8 +173,12 @@ def fetch_arxiv_papers(categories, max_results=30):
                 })
         
         return papers
+    except urllib.error.HTTPError as e:
+        print(f"   ⚠️ arXiv HTTP错误: {e.code} - {e.reason}")
+    except urllib.error.URLError as e:
+        print(f"   ⚠️ arXiv 连接失败: {e.reason}")
     except Exception as e:
-        print(f"arXiv获取失败: {e}")
+        print(f"   ⚠️ arXiv获取失败: {e}")
     return []
 
 def fetch_semantic_scholar_citations(arxiv_id):
@@ -263,10 +289,10 @@ def generate_topic_brief(topic_key, topic_config, date_str):
     
     all_papers = []
     
-    # 1. 从arXiv获取
+    # 1. 从arXiv获取 - 使用3天时间范围，避免某天无数据
     if 'arxiv_cats' in topic_config:
         print(f"  🔍 从 arXiv 获取...")
-        arxiv_papers = fetch_arxiv_papers(topic_config['arxiv_cats'], max_results=30)
+        arxiv_papers = fetch_arxiv_papers(topic_config['arxiv_cats'], max_results=50, days_back=3)
         print(f"  ✅ arXiv: {len(arxiv_papers)} 篇")
         all_papers.extend(arxiv_papers)
     
@@ -280,12 +306,11 @@ def generate_topic_brief(topic_key, topic_config, date_str):
     all_papers = deduplicate_papers(all_papers)
     print(f"  📊 去重后: {len(all_papers)} 篇")
     
-    # 4. 获取引用数并打分
-    print(f"  ⏳ 正在获取引用数和评分...")
+    # 4. 获取引用数并打分 - 暂时跳过 Semantic Scholar（网络慢）
+    print(f"  ⏳ 正在评分...")
     for paper in all_papers:
-        # 获取引用数
-        if paper.get('arxiv_id'):
-            paper['citation_count'] = fetch_semantic_scholar_citations(paper['arxiv_id'])
+        # 暂时跳过引用数获取（Semantic Scholar API 太慢）
+        paper['citation_count'] = 0
         
         # 打分
         paper['score'] = score_paper_v2(paper, topic_config)
@@ -330,22 +355,36 @@ tags: [daily-brief, {topic_key}]
 
 """
     
-    for i, paper in enumerate(top_papers[:3], 1):
-        extra_info = []
-        if paper.get('top_institution'):
-            extra_info.append(f"🏛️ {paper['top_institution']}")
-        if paper.get('conference'):
-            extra_info.append(f"📜 {paper['conference']}")
-        if paper.get('citation_count', 0) > 0:
-            extra_info.append(f"📈 引用:{paper['citation_count']}")
-        if paper.get('upvotes', 0) > 0:
-            extra_info.append(f"👍 HF:{paper['upvotes']}")
-        if paper.get('has_code'):
-            extra_info.append("💻 开源")
-        
-        extra_str = " | ".join(extra_info) if extra_info else ""
-        
-        md_content += f"""### {i}. {paper['title']}
+    if not top_papers:
+        md_content += """*今日暂无匹配的论文数据。*
+
+**可能原因**:
+- 最近几天该领域暂无新论文发布
+- 网络连接问题导致数据获取失败
+- API 服务暂时不可用
+
+**建议**:
+- 稍后重试生成
+- 直接访问 [arXiv](https://arxiv.org) 查看最新论文
+- 使用 `/sb <链接>` 手动收录感兴趣的文章
+"""
+    else:
+        for i, paper in enumerate(top_papers[:3], 1):
+            extra_info = []
+            if paper.get('top_institution'):
+                extra_info.append(f"🏛️ {paper['top_institution']}")
+            if paper.get('conference'):
+                extra_info.append(f"📜 {paper['conference']}")
+            if paper.get('citation_count', 0) > 0:
+                extra_info.append(f"📈 引用:{paper['citation_count']}")
+            if paper.get('upvotes', 0) > 0:
+                extra_info.append(f"👍 HF:{paper['upvotes']}")
+            if paper.get('has_code'):
+                extra_info.append("💻 开源")
+            
+            extra_str = " | ".join(extra_info) if extra_info else ""
+            
+            md_content += f"""### {i}. {paper['title']}
 - **来源**: {paper.get('source', 'arXiv')}
 - **评分**: {paper.get('score', 0)}/100 {f'({extra_str})' if extra_str else ''}
 - **摘要**: {paper['summary'][:150]}...
