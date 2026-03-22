@@ -122,7 +122,7 @@ def analyze_telemetry(telemetry):
 def analyze_feedback(feedback):
     """分析用户反馈"""
     if not feedback:
-        return {"count": 0, "avg_rating": 0}
+        return {"count": 0, "avg_rating": 0, "by_task": {}}
     
     ratings = [f.get('rating', 0) for f in feedback if f.get('rating')]
     avg_rating = sum(ratings) / len(ratings) if ratings else 0
