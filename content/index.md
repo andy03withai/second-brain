@@ -48,13 +48,13 @@ description: 收集、整理、学习、消化、发布
 
 | 主题 | 说明 | 最新简报 |
 |------|------|----------|
-| 🤖 [[input/ai/index|AI 前沿]] | 大模型、算法、训练优化 | [[input/20260409/ai|今日]] |
-| 🎯 [[input/agent/index|Agent 智能体]] | 智能体架构、工具调用 | [[input/20260409/agent|今日]] |
-| 🚗 [[input/autonomous-driving/index|自动驾驶]] | 端到端、VLA、BEV | [[input/20260409/autonomous-driving|今日]] |
-| 👁️ [[input/multimodal/index|多模态]] | Vision-Language、CLIP | [[input/20260409/multimodal|今日]] |
-| 🦾 [[input/embodied-intelligence/index|具身智能]] | 机器人、VLA | [[input/20260409/embodied-intelligence|今日]] |
+| 🤖 [[input/ai/index|AI 前沿]] | 大模型、算法、训练优化 | [[input/20260411/ai|今日]] |
+| 🎯 [[input/agent/index|Agent 智能体]] | 智能体架构、工具调用 | [[input/20260411/agent|今日]] |
+| 🚗 [[input/autonomous-driving/index|自动驾驶]] | 端到端、VLA、BEV | [[input/20260411/autonomous-driving|今日]] |
+| 👁️ [[input/multimodal/index|多模态]] | Vision-Language、CLIP | [[input/20260411/multimodal|今日]] |
+| 🦾 [[input/embodied-intelligence/index|具身智能]] | 机器人、VLA | [[input/20260411/embodied-intelligence|今日]] |
 
-**📰 总览**: [[input/20260409/index|2026-04-09 每日简报总览]] ⭐ 最新
+**📰 总览**: [[input/20260411/index|2026-04-11 每日简报总览]] ⭐ 最新
 
 **使用方式**：浏览简报 → 筛选有价值内容 → `/sb 链接` 收录
 
@@ -140,4 +140,4 @@ description: 收集、整理、学习、消化、发布
 
 ---
 
-*最后更新：2026-04-09*
+*最后更新：2026-04-11*
