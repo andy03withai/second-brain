@@ -1,0 +1,10 @@
+YYYY-MM-DD HH:MM — 杭州/长三角 cron delivery 故障
+
+问题: 两个活动追踪 cron job 配置了 `delivery: { mode: "announce", channel: "feishu" }`。
+错误: `cron delivery target is missing`。
+影响: 结果无法推送给用户，4/25 杭州文件未生成。
+临时方案: spawn 子任务手动生成文件。
+永久修复: 去掉 delivery.channel，仅保留 mode: "announce"。
+TODO: 等 gateway cron API 恢复后更新两个 job 的 delivery 配置。
+
+---
