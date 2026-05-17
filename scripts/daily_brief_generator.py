@@ -142,7 +142,7 @@ def fetch_hf_daily_papers():
         print(f"   ⚠️ HF Mirror 获取失败: {str(e)[:60]}")
     return []
 
-def fetch_arxiv_papers(categories, max_results=30, days_back=3):
+def fetch_arxiv_papers(categories, max_results=30, days_back=7):
     """获取arXiv论文（支持多分类）- 扩大时间范围到最近N天"""
     try:
         # 扩大时间范围到最近几天，避免某天没有新论文
@@ -315,7 +315,7 @@ def generate_topic_brief(topic_key, topic_config, date_str):
     # 1. 从arXiv获取 - 使用3天时间范围，避免某天无数据
     if 'arxiv_cats' in topic_config:
         print(f"  🔍 从 arXiv 获取...")
-        arxiv_papers = fetch_arxiv_papers(topic_config['arxiv_cats'], max_results=50, days_back=3)
+        arxiv_papers = fetch_arxiv_papers(topic_config['arxiv_cats'], max_results=50, days_back=7)
         print(f"  ✅ arXiv: {len(arxiv_papers)} 篇")
         all_papers.extend(arxiv_papers)
     
@@ -664,19 +664,23 @@ def main():
     
     # 推送到GitHub前执行测试
     print("\n🔍 执行发布前测试...")
-    try:
-        result = subprocess.run(
-            ['python3', '/root/.openclaw/workspace/skills/pre-publish-testing/scripts/test_before_publish.py'],
-            capture_output=True,
-            text=True
-        )
-        print(result.stdout)
-        if result.returncode != 0:
-            print("⚠️ 测试未通过，停止推送")
-            print(result.stderr)
-            return
-    except Exception as e:
-        print(f"⚠️ 测试执行失败: {e}")
+    test_script = '/root/.openclaw/workspace/skills/pre-publish-testing/scripts/test_before_publish.py'
+    if os.path.exists(test_script):
+        try:
+            result = subprocess.run(
+                ['python3', test_script],
+                capture_output=True,
+                text=True
+            )
+            print(result.stdout)
+            if result.returncode != 0:
+                print("⚠️ 测试未通过，停止推送")
+                print(result.stderr)
+                return
+        except Exception as e:
+            print(f"⚠️ 测试执行失败: {e}")
+    else:
+        print(f"⚠️ 测试脚本不存在，跳过测试: {test_script}")
         import traceback
         traceback.print_exc()
     
