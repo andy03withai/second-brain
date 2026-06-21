@@ -11,8 +11,8 @@ description: 自动采集的信息源，每日更新
 
 | 主题 | 说明 | 今日简报 |
 |------|------|----------|
-| 🗺️ [[input/hangzhou-events/2026-06-13\|杭州城市活动]] | 杭州本地展览、演出、户外、亲子活动 | [[input/hangzhou-events/2026-06-13\|📅 本周]] |
-| 🗺️ [[input/yangtze-events/2026-06-21|长三角城市活动]] | 城市展览、演出、户外、亲子活动 | [[input/yangtze-events/2026-06-21|📅 本周]] |
+| 🗺️ [[input/hangzhou-events/2026-06-22\|杭州城市活动]] | 杭州本地展览、演出、户外、亲子活动 | [[input/hangzhou-events/2026-06-22\|📅 本周]] |
+| 🗺️ [[input/yangtze-events/2026-06-20|长三角城市活动]] | 城市展览、演出、户外、亲子活动 | [[input/yangtze-events/2026-06-20|📅 本周]] |
 | 🤖 [[input/ai/index\|AI 前沿]] | 大模型、算法、训练优化 | [[input/20260318/ai\|📅 今日]] |
 | 🎯 [[input/agent/index\|Agent 智能体]] | 智能体架构、工具调用、Multi-Agent | [[input/20260318/agent\|📅 今日]] |
 | 🚗 [[input/autonomous-driving/index\|自动驾驶]] | 端到端、VLA、BEV、Occupancy | [[input/20260318/autonomous-driving\|📅 今日]] |
@@ -21,9 +21,7 @@ description: 自动采集的信息源，每日更新
 
 ## 📅 今日简报
 
-- [[input/20260622/index|2026年06月22日 - 每日简报总览]] ⭐ 最新
-- [[input/20260621/index|2026年06月21日 - 每日简报总览]]
-- [[input/20260620/index|2026年06月20日 - 每日简报总览]]
+- [[input/20260620/index|2026年06月20日 - 每日简报总览]] ⭐ 最新
 - [[input/20260619/index|2026年06月19日 - 每日简报总览]]
 - [[input/20260618/index|2026年06月18日 - 每日简报总览]]
 - [[input/20260617/index|2026年06月17日 - 每日简报总览]]
