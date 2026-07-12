@@ -12,7 +12,7 @@ description: 自动采集的信息源，每日更新
 | 主题 | 说明 | 今日简报 |
 |------|------|----------|
 | 🗺️ [[input/hangzhou-events/2026-06-29\|杭州城市活动]] | 杭州本地展览、演出、户外、亲子活动 | [[input/hangzhou-events/2026-06-29\|📅 本周]] |
-| 🗺️ [[input/yangtze-events/2026-07-06\|长三角城市活动]] | 城市展览、演出、户外、亲子活动 | [[input/yangtze-events/2026-07-06\|📅 本周]] |
+| 🗺️ [[input/yangtze-events/2026-07-12\|长三角城市活动]] | 城市展览、演出、户外、亲子活动 | [[input/yangtze-events/2026-07-12\|📅 本周]] |
 | 🤖 [[input/ai/index\|AI 前沿]] | 大模型、算法、训练优化 | [[input/20260318/ai\|📅 今日]] |
 | 🎯 [[input/agent/index\|Agent 智能体]] | 智能体架构、工具调用、Multi-Agent | [[input/20260318/agent\|📅 今日]] |
 | 🚗 [[input/autonomous-driving/index\|自动驾驶]] | 端到端、VLA、BEV、Occupancy | [[input/20260318/autonomous-driving\|📅 今日]] |
