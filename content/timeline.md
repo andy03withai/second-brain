@@ -13,6 +13,21 @@ description: 按时间顺序浏览第二大脑的所有内容更新
 
 ## 2026年8月
 
+### 📅 8月9日 周日
+
+<div class="timeline-cards">
+
+<div class="card">
+<div class="card-icon">📰</div>
+<div class="card-content">
+<div class="card-title">每日简报 - 8月9日 周日</div>
+<div class="card-desc">AI、Agent、自动驾驶、多模态、具身智能 5个主题简报</div>
+<div class="card-link"><a href="input/20260809/index">查看简报 →</a></div>
+</div>
+</div>
+
+</div>
+
 ### 📅 8月8日 周六
 
 <div class="timeline-cards">
@@ -2302,4 +2317,4 @@ description: 按时间顺序浏览第二大脑的所有内容更新
 
 ---
 
-*时间线最后更新: 2026-08-08*
+*时间线最后更新: 2026-08-09*
