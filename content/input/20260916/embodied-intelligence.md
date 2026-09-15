@@ -11,24 +11,40 @@ tags: [daily-brief, embodied-intelligence]
 
 ## 📊 今日概览
 
-- **扫描论文**: 0 篇 (arXiv + HF Daily)
-- **入选推荐**: 0 篇
-- **平均分**: 0
-- **更新时间**: 05:41
+- **扫描论文**: 50 篇 (arXiv + HF Daily)
+- **入选推荐**: 10 篇
+- **平均分**: 60
+- **更新时间**: 05:42
 
 ## 🌟 TOP 推荐
 
-*今日暂无匹配的论文数据。*
+### 1. StereoPatch: Patch-Aligned RGB-Depth Fusion for Spatial Perception in Robot Manipulation
+- **来源**: arXiv
+- **评分**: 69/100 (🏛️ Mit)
+- **摘要**: Recent advances in robot imitation learning have produced visuomotor policies that predict actions directly from visual observations. Yet visually sim...
+- **链接**: [http://arxiv.org/abs/2609.15509v1](http://arxiv.org/abs/2609.15509v1)
 
-**可能原因**:
-- 最近几天该领域暂无新论文发布
-- 网络连接问题导致数据获取失败
-- API 服务暂时不可用
+### 2. Touch2Trace: Tactile-Driven Imitation Learning for Dexterous Cable Tracing
+- **来源**: arXiv
+- **评分**: 62/100 (🏛️ Mit)
+- **摘要**: Dexterous manipulation of deformable objects demands continuous fingertip-level regulation of pressure, friction, and incipient slip. We study one of ...
+- **链接**: [http://arxiv.org/abs/2609.15921v1](http://arxiv.org/abs/2609.15921v1)
 
-**建议**:
-- 稍后重试生成
-- 直接访问 [arXiv](https://arxiv.org) 查看最新论文
-- 使用 `/sb <链接>` 手动收录感兴趣的文章
+### 3. DuctAM: A Duct-Assisted Quadrotor-Based Aerial Manipulator Enabling High-Force Push-and-Pull Interactions
+- **来源**: arXiv
+- **评分**: 62/100 (🏛️ Mit)
+- **摘要**: Uncrewed Aerial Manipulators (UAMs) extend the capabilities of Uncrewed Aerial Vehicles (UAVs) from perception to physical interaction. Among various ...
+- **链接**: [http://arxiv.org/abs/2609.15861v1](http://arxiv.org/abs/2609.15861v1)
+
+## 📋 其他值得关注的
+
+4. **P-POSEMEM: Projective Semantic Memory for Consistent Language Grounding under Pose-Graph Rewrites** [Mit] - 评分:62 - [链接](http://arxiv.org/abs/2609.15475v1)
+5. **Understanding User Preferences of a Slope-Aware Variable-Admittance Filter for a Robot Guide Dog** [Mit] - 评分:62 - [链接](http://arxiv.org/abs/2609.15362v1)
+6. **Distributed Safe Cooperative Vector Field for Trajectory Curvature Constrained Multi-Robot Systems** [Mit] - 评分:62 - [链接](http://arxiv.org/abs/2609.15266v1)
+7. **Primitive-Informed Sampling-Based MPC for Multi-Fingered Dexterous Manipulation** [Mit] - 评分:62 - [链接](http://arxiv.org/abs/2609.14868v1)
+8. **WLA$^3$: World Latent Action Modeling for Semantics, Dynamics, and Kinematics** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.15870v1)
+9. **Continuous Manifold-Decomposed Impedance Retargeting for Contact-Rich Imitation Learning** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.15716v1)
+10. **Volumetric Harmonic Field Navigation for Quadrotors** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.15680v1)
 
 ## 🏷️ 关键词
 
@@ -47,6 +63,6 @@ tags: [daily-brief, embodied-intelligence]
 
 > **← 返回** | [[index|📰 查看总览]] | [[ai|AI前沿]] | [[agent|Agent]] | [[autonomous-driving|自动驾驶]] | [[multimodal|多模态]] | [[embodied-intelligence|具身智能]]
 
-*简报由 Ace 自动生成于 2026-09-16 05:41*
+*简报由 Ace 自动生成于 2026-09-16 05:42*
 *数据来源: arXiv + Hugging Face Daily Papers + Semantic Scholar*
 *如需深度分析某篇论文，请使用 `/sb 链接` 命令收录*
