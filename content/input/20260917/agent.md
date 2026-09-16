@@ -11,24 +11,40 @@ tags: [daily-brief, agent]
 
 ## 📊 今日概览
 
-- **扫描论文**: 0 篇 (arXiv + HF Daily)
-- **入选推荐**: 0 篇
-- **平均分**: 0
-- **更新时间**: 05:40
+- **扫描论文**: 63 篇 (arXiv + HF Daily)
+- **入选推荐**: 10 篇
+- **平均分**: 58
+- **更新时间**: 05:47
 
 ## 🌟 TOP 推荐
 
-*今日暂无匹配的论文数据。*
+### 1. Mo' Models, Mo' Problems: How to best select model pools when designing Multi-Agent Systems
+- **来源**: arXiv
+- **评分**: 69/100 (🏛️ Mit)
+- **摘要**: Multi-agent Systems (MAS) combine multiple model outputs to solve complex reasoning tasks. However, despite rapid growth of available open-source mode...
+- **链接**: [http://arxiv.org/abs/2609.17306v1](http://arxiv.org/abs/2609.17306v1)
 
-**可能原因**:
-- 最近几天该领域暂无新论文发布
-- 网络连接问题导致数据获取失败
-- API 服务暂时不可用
+### 2. LACE: Layer-Wise Compression for Dynamic Frame Rate Codecs
+- **来源**: arXiv
+- **评分**: 63/100 (🏛️ Mit | 💻 开源)
+- **摘要**: Neural audio codecs are a key component in speech language modeling. However, their high frame rates lead to long sequence lengths, increasing computa...
+- **链接**: [http://arxiv.org/abs/2609.17509v1](http://arxiv.org/abs/2609.17509v1)
 
-**建议**:
-- 稍后重试生成
-- 直接访问 [arXiv](https://arxiv.org) 查看最新论文
-- 使用 `/sb <链接>` 手动收录感兴趣的文章
+### 3. Self-Emergence Agent Architecture:Behavior-Inertia HMM, Reflexive Metacognition,and Social-Contrastive Self-Modeling
+- **来源**: arXiv
+- **评分**: 62/100 (🏛️ Meta)
+- **摘要**: Large language model (LLM) agents exhibit strong language-generation and problem-solving capabilities, yet suffer from three structural limitations: p...
+- **链接**: [http://arxiv.org/abs/2609.17331v1](http://arxiv.org/abs/2609.17331v1)
+
+## 📋 其他值得关注的
+
+4. **FROD: Feature Matching Residual Denoising Oracle Bone Decipher** [ACL] - 评分:60 - [链接](http://arxiv.org/abs/2609.17227v1)
+5. **When Should LLMs Abstain? Chain-of-Self-Questioning for Selective Risk Control** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17516v1)
+6. **Coupled Calibration and Learning: Mitigating Teacher Bias in LLM Distillation without Target-Domain Reward Feedback** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17474v1)
+7. **Vroom-Vroom at SHROOM-Visions: A Multi-Judge Committee for Detecting Hallucinated Spans in Vision-Language Outputs** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17327v1)
+8. **Extracting ontology-compliant knowledge from scientific text describing irradiated materials using large language models** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17291v1)
+9. **MOCC-R1: Reinforcing Reasoning-Response Consistency for Multimodal Counselor Response Generation** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17180v1)
+10. **A unified framework for global and local interpretability using adaptive derivative-ordered random explanation** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17171v1)
 
 ## 🏷️ 关键词
 
@@ -47,6 +63,6 @@ Agent, 智能体, Multi-Agent, 工具调用, AutoGPT
 
 > **← 返回** | [[index|📰 查看总览]] | [[ai|AI前沿]] | [[agent|Agent]] | [[autonomous-driving|自动驾驶]] | [[multimodal|多模态]] | [[embodied-intelligence|具身智能]]
 
-*简报由 Ace 自动生成于 2026-09-17 05:40*
+*简报由 Ace 自动生成于 2026-09-17 05:47*
 *数据来源: arXiv + Hugging Face Daily Papers + Semantic Scholar*
 *如需深度分析某篇论文，请使用 `/sb 链接` 命令收录*

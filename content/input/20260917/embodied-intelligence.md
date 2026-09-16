@@ -11,24 +11,40 @@ tags: [daily-brief, embodied-intelligence]
 
 ## 📊 今日概览
 
-- **扫描论文**: 0 篇 (arXiv + HF Daily)
-- **入选推荐**: 0 篇
-- **平均分**: 0
-- **更新时间**: 05:40
+- **扫描论文**: 64 篇 (arXiv + HF Daily)
+- **入选推荐**: 10 篇
+- **平均分**: 58
+- **更新时间**: 05:47
 
 ## 🌟 TOP 推荐
 
-*今日暂无匹配的论文数据。*
+### 1. Artificial Intelligence-Enabled Space Robot Operations: Technologies, Challenges and Prospects
+- **来源**: arXiv
+- **评分**: 69/100 (🏛️ Mit)
+- **摘要**: Space robots are increasingly expected to perform long-duration, contact-rich, and multi-stage operations with limited human intervention. Recent adva...
+- **链接**: [http://arxiv.org/abs/2609.16880v1](http://arxiv.org/abs/2609.16880v1)
 
-**可能原因**:
-- 最近几天该领域暂无新论文发布
-- 网络连接问题导致数据获取失败
-- API 服务暂时不可用
+### 2. TEMPO: Learning Temporal Context for Dynamic Robot Manipulation
+- **来源**: arXiv
+- **评分**: 69/100 (🏛️ Mit)
+- **摘要**: Vision-language-action (VLA) models have achieved impressive performance in quasi-static manipulation, but struggle in dynamic manipulation tasks beca...
+- **链接**: [http://arxiv.org/abs/2609.16864v1](http://arxiv.org/abs/2609.16864v1)
 
-**建议**:
-- 稍后重试生成
-- 直接访问 [arXiv](https://arxiv.org) 查看最新论文
-- 使用 `/sb <链接>` 手动收录感兴趣的文章
+### 3. The Latent That Never Was: A Forensic Re-run of the CVAE Ablation in Action Chunking Transformer
+- **来源**: arXiv
+- **评分**: 62/100 (💻 开源)
+- **摘要**: Action Chunking Transformers (ACT) are widely used to learn robot manipulation from demonstrations. Their conditional variational autoencoder includes...
+- **链接**: [http://arxiv.org/abs/2609.16745v1](http://arxiv.org/abs/2609.16745v1)
+
+## 📋 其他值得关注的
+
+4. **Escape-Aware Control Barrier Functions for Quadrotor Safety under Body-Rate Limits** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17292v1)
+5. **TIO-Former: Ultra-Lightweight 6-Directional ToF-Inertial Odometry for Nano-UAVs via a Streaming Causal Transformer** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17198v1)
+6. **Fleet-To-Lab: A Transfer Learning Framework For Lunar Rover Slippage Estimation Via Model Fusion** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17187v1)
+7. **Learning Options for Compositional Motor Control with Adapter Banks** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17042v1)
+8. **IL-ACT: Imitation Learning with Adaptive Cartesian Tracking Control for a 30-ton Excavator** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.16696v1)
+9. **Another Blueprint In The Wall: How to Ask Frontier AI Like a Kid?** [Google] - 评分:55 - [链接](https://arxiv.org/abs/2609.14803)
+10. **XPACE: Joint World and Action Modeling from Heterogeneous Experience** - 评分:54 - [链接](http://arxiv.org/abs/2609.17372v1)
 
 ## 🏷️ 关键词
 
@@ -47,6 +63,6 @@ tags: [daily-brief, embodied-intelligence]
 
 > **← 返回** | [[index|📰 查看总览]] | [[ai|AI前沿]] | [[agent|Agent]] | [[autonomous-driving|自动驾驶]] | [[multimodal|多模态]] | [[embodied-intelligence|具身智能]]
 
-*简报由 Ace 自动生成于 2026-09-17 05:40*
+*简报由 Ace 自动生成于 2026-09-17 05:47*
 *数据来源: arXiv + Hugging Face Daily Papers + Semantic Scholar*
 *如需深度分析某篇论文，请使用 `/sb 链接` 命令收录*

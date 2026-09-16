@@ -91,18 +91,28 @@ def fetch_hf_daily_papers():
         with urllib.request.urlopen(req, timeout=15) as response:
             html = response.read().decode('utf-8')
         
-        # 尝试多种方式提取论文数据
+        # 方式1: Svelte hydration data-props (当前页面结构)
         papers_data = []
-        
-        # 方式1: 查找 "papers":[{...}] 格式
-        papers_match = re.search(r'"papers":(\[.*?\]),"prevDate"', html, re.DOTALL)
-        if papers_match:
+        props_match = re.search(r'data-target="DailyPapers"\s+data-props="([^"]+)"', html)
+        if props_match:
+            import html as html_module
+            decoded = html_module.unescape(props_match.group(1))
             try:
-                papers_data = json.loads(papers_match.group(1))
-            except:
+                props = json.loads(decoded)
+                papers_data = props.get('dailyPapers', [])
+            except json.JSONDecodeError:
                 pass
         
-        # 方式2: 如果没找到，尝试查找 window.__NUXT__
+        # 方式2: 查找 "papers":[...] 格式 (旧版页面)
+        if not papers_data:
+            papers_match = re.search(r'"papers":(\[.*?\]),"prevDate"', html, re.DOTALL)
+            if papers_match:
+                try:
+                    papers_data = json.loads(papers_match.group(1))
+                except:
+                    pass
+        
+        # 方式3: window.__NUXT__ (旧版备用)
         if not papers_data:
             nuxt_match = re.search(r'window\.__NUXT__=([^<]+);</script>', html)
             if nuxt_match:
@@ -149,28 +159,37 @@ def fetch_arxiv_papers(categories, max_results=30, days_back=7):
         start_date = (datetime.now() - timedelta(days=days_back)).strftime('%Y%m%d')
         today = datetime.now().strftime('%Y%m%d')
         
-        # 构建多分类查询
-        cat_query = ' OR '.join([f'cat:{cat}' for cat in categories])
-        query = f'({cat_query}) AND submittedDate:[{start_date}0000 TO {today}0000]'
+        # arXiv API rejects multi-category Boolean queries (406 error) and
+        # submittedDate range filters are broken server-side.
+        # Strategy: fetch each category individually, then merge + dedup + client-side date filter.
+        all_entries = []
+        seen_ids = set()
         
-        url = f'https://export.arxiv.org/api/query?search_query={urllib.parse.quote(query)}&sortBy=submittedDate&sortOrder=descending&max_results={max_results}'
-        
-        print(f"   🔍 arXiv: 查询最近{days_back}天 ({start_date} ~ {today})")
-        
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=15) as response:
-            content = response.read().decode('utf-8')
+        for cat in categories:
+            cat_url = f'https://export.arxiv.org/api/query?search_query=cat:{cat}&sortBy=submittedDate&sortOrder=descending&max_results={max_results}'
+            req = urllib.request.Request(cat_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=15) as response:
+                cat_content = response.read().decode('utf-8')
             
+            entries = re.findall(r'<entry[^>]*>(.*?)</entry>', cat_content, re.DOTALL)
+            for entry in entries:
+                # Deduplicate by arXiv ID within the raw entries
+                id_match = re.search(r'<id>(.*?)</id>', entry)
+                if id_match:
+                    entry_id = id_match.group(1).strip()
+                    if entry_id not in seen_ids:
+                        seen_ids.add(entry_id)
+                        all_entries.append(entry)
+        
+        content_entries = all_entries
+        
         # 检查是否返回错误
-        if 'Error 503' in content or 'Error 500' in content:
-            print(f"   ⚠️ arXiv 服务暂时不可用")
-            return []
-            
-        # 解析XML
-        entries = re.findall(r'<entry[^>]*>(.*?)</entry>', content, re.DOTALL)
         papers = []
         
-        for entry in entries:
+        # 客户端日期过滤
+        cutoff = datetime.now() - timedelta(days=days_back)
+        
+        for entry in content_entries:
             title_match = re.search(r'<title>(.*?)</title>', entry, re.DOTALL)
             summary_match = re.search(r'<summary>(.*?)</summary>', entry, re.DOTALL)
             url_match = re.search(r'<id>(.*?)</id>', entry)
@@ -183,6 +202,15 @@ def fetch_arxiv_papers(categories, max_results=30, days_back=7):
                 if title == 'Error 503 Service Unavailable':
                     continue
                     
+                # 客户端日期过滤
+                if published_match:
+                    try:
+                        pub_date = datetime.strptime(published_match.group(1)[:10], '%Y-%m-%d')
+                        if pub_date < cutoff:
+                            continue
+                    except ValueError:
+                        pass
+                
                 arxiv_id = url_match.group(1).strip().split('/abs/')[-1] if url_match else ''
                 
                 papers.append({

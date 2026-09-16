@@ -11,24 +11,40 @@ tags: [daily-brief, autonomous-driving]
 
 ## 📊 今日概览
 
-- **扫描论文**: 0 篇 (arXiv + HF Daily)
-- **入选推荐**: 0 篇
-- **平均分**: 0
-- **更新时间**: 05:40
+- **扫描论文**: 108 篇 (arXiv + HF Daily)
+- **入选推荐**: 10 篇
+- **平均分**: 56
+- **更新时间**: 05:47
 
 ## 🌟 TOP 推荐
 
-*今日暂无匹配的论文数据。*
+### 1. TEMPO: Learning Temporal Context for Dynamic Robot Manipulation
+- **来源**: arXiv
+- **评分**: 62/100 (🏛️ Mit)
+- **摘要**: Vision-language-action (VLA) models have achieved impressive performance in quasi-static manipulation, but struggle in dynamic manipulation tasks beca...
+- **链接**: [http://arxiv.org/abs/2609.16864v1](http://arxiv.org/abs/2609.16864v1)
 
-**可能原因**:
-- 最近几天该领域暂无新论文发布
-- 网络连接问题导致数据获取失败
-- API 服务暂时不可用
+### 2. FROD: Feature Matching Residual Denoising Oracle Bone Decipher
+- **来源**: arXiv
+- **评分**: 60/100 (📜 ACL)
+- **摘要**: Oracle bone script (OBS), one of the earliest Chinese writing systems, plays an important role in the study of Chinese etymology. Traditional decipher...
+- **链接**: [http://arxiv.org/abs/2609.17227v1](http://arxiv.org/abs/2609.17227v1)
 
-**建议**:
-- 稍后重试生成
-- 直接访问 [arXiv](https://arxiv.org) 查看最新论文
-- 使用 `/sb <链接>` 手动收录感兴趣的文章
+### 3. Tables Decoded: DELTA for Structure, TARQA for Understanding
+- **来源**: arXiv
+- **评分**: 55/100 (💻 开源)
+- **摘要**: Table understanding is a core task in document intelligence, encompassing two key subtasks: table reconstruction and table visual question answering (...
+- **链接**: [http://arxiv.org/abs/2609.17458v1](http://arxiv.org/abs/2609.17458v1)
+
+## 📋 其他值得关注的
+
+4. **Semantic-Spatial Agreement Verification for Mitigating Object Hallucination in Multimodal Large Language Models** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17269v1)
+5. **Exploring 2D backbone effects for indoor semantic occupancy prediction** - 评分:55 - [链接](http://arxiv.org/abs/2609.17257v1)
+6. **MUMINS: Metadata-conditioned Uncertainty-aware Medical Image Next-state Synthesis** [Meta] - 评分:55 - [链接](http://arxiv.org/abs/2609.17169v1)
+7. **From Foundation Embeddings to Cropland Maps: Label Efficiency, Temporal Transferability and Independent Human Validation** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.17138v1)
+8. **MedPCFM-TED: One-Step Point Cloud Flow Matching for Implant Generation via Teacher-Guided Endpoint Distillation** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.16934v1)
+9. **VOR-Bench: A Human Perception-Driven Benchmark for Video Object Removal** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.16878v1)
+10. **Multi-modal Knowledge Preserving Adapter for Embedding Backward Compatibility** [Mit] - 评分:55 - [链接](http://arxiv.org/abs/2609.16875v1)
 
 ## 🏷️ 关键词
 
@@ -47,6 +63,6 @@ tags: [daily-brief, autonomous-driving]
 
 > **← 返回** | [[index|📰 查看总览]] | [[ai|AI前沿]] | [[agent|Agent]] | [[autonomous-driving|自动驾驶]] | [[multimodal|多模态]] | [[embodied-intelligence|具身智能]]
 
-*简报由 Ace 自动生成于 2026-09-17 05:40*
+*简报由 Ace 自动生成于 2026-09-17 05:47*
 *数据来源: arXiv + Hugging Face Daily Papers + Semantic Scholar*
 *如需深度分析某篇论文，请使用 `/sb 链接` 命令收录*
