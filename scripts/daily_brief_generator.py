@@ -40,9 +40,9 @@ TOPICS = {
     },
     'multimodal': {
         'name': '多模态数据',
-        'sources': ['arxiv-cs.CV', 'arxiv-cs.MM', 'huggingface-daily'],
+        'sources': ['arxiv-cs.CV', 'arxiv-cs.CL', 'huggingface-daily'],
         'keywords': ['多模态', 'Multimodal', 'CLIP', 'Vision-Language', 'VLM'],
-        'arxiv_cats': ['cs.CV', 'cs.MM']
+        'arxiv_cats': ['cs.CV', 'cs.CL']
     },
     'embodied-intelligence': {
         'name': '具身智能',
@@ -165,7 +165,8 @@ def fetch_arxiv_papers(categories, max_results=30, days_back=7):
         all_entries = []
         seen_ids = set()
         
-        for cat in categories:
+        import time
+        for i, cat in enumerate(categories):
             cat_url = f'https://export.arxiv.org/api/query?search_query=cat:{cat}&sortBy=submittedDate&sortOrder=descending&max_results={max_results}'
             req = urllib.request.Request(cat_url, headers={'User-Agent': 'Mozilla/5.0'})
             with urllib.request.urlopen(req, timeout=15) as response:
@@ -180,6 +181,10 @@ def fetch_arxiv_papers(categories, max_results=30, days_back=7):
                     if entry_id not in seen_ids:
                         seen_ids.add(entry_id)
                         all_entries.append(entry)
+            
+            # Delay between category requests to avoid arXiv rate limiting
+            if i < len(categories) - 1:
+                time.sleep(3)
         
         content_entries = all_entries
         
