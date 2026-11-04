@@ -11,7 +11,99 @@ description: 按时间顺序浏览第二大脑的所有内容更新
 
 ## 2026年3月
 
+## 2026年11月
+
+### 📅 11月4日 周三
+
+<div class="timeline-cards">
+
+<div class="card">
+<div class="card-icon">📰</div>
+<div class="card-content">
+<div class="card-title">每日简报 - 11月4日 周三</div>
+<div class="card-desc">AI、Agent、自动驾驶、多模态、具身智能 5个主题简报</div>
+<div class="card-link"><a href="input/20261104/index">查看简报 →</a></div>
+</div>
+</div>
+
+</div>
+
+### 📅 11月3日 周二
+
+<div class="timeline-cards">
+
+<div class="card">
+<div class="card-icon">📰</div>
+<div class="card-content">
+<div class="card-title">每日简报 - 11月3日 周二</div>
+<div class="card-desc">AI、Agent、自动驾驶、多模态、具身智能 5个主题简报</div>
+<div class="card-link"><a href="input/20261103/index">查看简报 →</a></div>
+</div>
+</div>
+
+</div>
+
+### 📅 11月2日 周一
+
+<div class="timeline-cards">
+
+<div class="card">
+<div class="card-icon">📰</div>
+<div class="card-content">
+<div class="card-title">每日简报 - 11月2日 周一</div>
+<div class="card-desc">AI、Agent、自动驾驶、多模态、具身智能 5个主题简报</div>
+<div class="card-link"><a href="input/20261102/index">查看简报 →</a></div>
+</div>
+</div>
+
+</div>
+
+### 📅 11月1日 周日
+
+<div class="timeline-cards">
+
+<div class="card">
+<div class="card-icon">📰</div>
+<div class="card-content">
+<div class="card-title">每日简报 - 11月1日 周日</div>
+<div class="card-desc">AI、Agent、自动驾驶、多模态、具身智能 5个主题简报</div>
+<div class="card-link"><a href="input/20261101/index">查看简报 →</a></div>
+</div>
+</div>
+
+</div>
+
 ## 2026年10月
+
+### 📅 10月31日 周六
+
+<div class="timeline-cards">
+
+<div class="card">
+<div class="card-icon">📰</div>
+<div class="card-content">
+<div class="card-title">每日简报 - 10月31日 周六</div>
+<div class="card-desc">AI、Agent、自动驾驶、多模态、具身智能 5个主题简报</div>
+<div class="card-link"><a href="input/20261031/index">查看简报 →</a></div>
+</div>
+</div>
+
+</div>
+
+### 📅 10月30日 周五
+
+<div class="timeline-cards">
+
+<div class="card">
+<div class="card-icon">📰</div>
+<div class="card-content">
+<div class="card-title">每日简报 - 10月30日 周五</div>
+<div class="card-desc">AI、Agent、自动驾驶、多模态、具身智能 5个主题简报</div>
+<div class="card-link"><a href="input/20261030/index">查看简报 →</a></div>
+</div>
+</div>
+
+</div>
 
 ### 📅 10月29日 周四
 
@@ -3536,4 +3628,4 @@ description: 按时间顺序浏览第二大脑的所有内容更新
 
 ---
 
-*时间线最后更新: 2026-10-29*
+*时间线最后更新: 2026-11-04*
