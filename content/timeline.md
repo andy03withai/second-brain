@@ -13,6 +13,21 @@ description: 按时间顺序浏览第二大脑的所有内容更新
 
 ## 2026年11月
 
+### 📅 11月19日 周四
+
+<div class="timeline-cards">
+
+<div class="card">
+<div class="card-icon">📰</div>
+<div class="card-content">
+<div class="card-title">每日简报 - 11月19日 周四</div>
+<div class="card-desc">AI、Agent、自动驾驶、多模态、具身智能 5个主题简报</div>
+<div class="card-link"><a href="input/20261119/index">查看简报 →</a></div>
+</div>
+</div>
+
+</div>
+
 ### 📅 11月18日 周三
 
 <div class="timeline-cards">
@@ -3838,4 +3853,4 @@ description: 按时间顺序浏览第二大脑的所有内容更新
 
 ---
 
-*时间线最后更新: 2026-11-18*
+*时间线最后更新: 2026-11-19*
